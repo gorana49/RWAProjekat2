@@ -1,0 +1,16 @@
+<div class= "content-container">
+    <div class="content-picture-container"> </div>
+    <div class="content-log-reg-div"> 
+        <button  class="login-text-button" (click)="showLogInModal()" mat-raised-button>
+            Login
+        </button>
+        <button  class="login-graph-button" (click)="showLogInModalGraph()" mat-raised-button>
+            Login Graph
+        </button>
+        <button  class="register-button" mat-raised-button>
+            Register
+        </button>
+    </div>
+</div>
+<login-text *ngIf='displayLogIn' (cancelClicked)='hideLogInModal()'></login-text>
+<login-graphic *ngIf='displayLogInGraph' (cancelClicked)='hideLogInModalGraph()'></login-graphic>

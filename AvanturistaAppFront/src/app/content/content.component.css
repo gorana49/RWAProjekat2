@@ -1,0 +1,22 @@
+.content-picture-container
+{
+    background-image: url("../../assets/contentPicture.jpg");
+    height: 1200px;
+    width: 1500px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    opacity: 0.8;
+}
+
+.content-log-reg-div
+{
+    background-color: thistle;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-container{
+   display: flex;
+   flex-direction: row;
+}
