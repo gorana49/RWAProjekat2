@@ -1,4 +1,4 @@
-import {UserActions,UserActionsTypes, LoginUser} from '../actions/user.actions';
+import {UserActions,UserActionsTypes, LoginUser, DodajKomentarUspesno, DodajAvanturuUspesno} from '../actions/user.actions';
 import {AuthState} from '../../models/auth-state'
 
 export function userReducer(state:AuthState=null,action:UserActions) {
@@ -12,6 +12,14 @@ export function userReducer(state:AuthState=null,action:UserActions) {
 
         case UserActionsTypes.USER_LOGOUT:{
             return null;
+        }
+        case UserActionsTypes.DODAJ_AVANTURU_USPESNO:{
+            const {user} = action as DodajAvanturuUspesno;
+            return user;
+        }
+        case UserActionsTypes.DODAJ_KOMENTAR_USPESNO:{
+            const {user} = action as DodajKomentarUspesno;
+            return user;
         }
         default:
             return state;

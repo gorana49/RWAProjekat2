@@ -7,7 +7,11 @@ import {urlAdresa} from '../constants/url'
 import {AuthKorisnikResponse} from "../models/auth-korisnik-response"
 import { User } from '../models/user';
 const users_url=urlAdresa.USER_URL;
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
   
   @Injectable({
       providedIn: 'root'
@@ -25,6 +29,10 @@ export class LoginTextService {
     public userRegistration(user:User):Observable<User>{
         return this.http.post<User>(`${users_url}`,user);
       }
+
+      public updateUser(user:User):Observable<User>{
+        return this.http.put<User>(`${users_url}/${user.id}`,user,httpOptions);
+       }
     logout(): void{
 
     }

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {KorisnikMainComponent} from "../app/korisnik-main/korisnik-main.component"
-import {TuristInfoMainComponent} from '../app/turist-info-main/turist-info-main.component'
-import {IstraziSrbijuComponent} from '../app/istrazi-srbiju/istrazi-srbiju.component'
-import {PretraziLokacijeComponent} from '../app/pretrazi-lokacije/pretrazi-lokacije.component'
-import {PregledAvanturaComponent} from '../app/pregled-avantura/pregled-avantura.component'
-import {AvanturaComponent} from '../app/avantura/avantura.component'
-import {KalkulatorComponent} from '../app/kalkulator/kalkulator.component'
-import {PosecenoComponent} from '../app/poseceno/poseceno.component'
-import {OstaliPosecenoComponent} from '../app/ostali-poseceno/ostali-poseceno.component'
-import {DodajAvanturuComponent} from '../app/dodaj-avanturu/dodaj-avanturu.component'
-import {ProsecneCeneComponent} from '../app/prosecne-cene/prosecne-cene.component'
-import { ContentComponent } from './content/content.component';
+import {KorisnikMainComponent} from "../app/components/korisnik-main/korisnik-main.component"
+import {TuristInfoMainComponent} from '../app/components/turist-info-main/turist-info-main.component'
+import {IstraziSrbijuComponent} from '../app/components/istrazi-srbiju/istrazi-srbiju.component'
+import {PretraziLokacijeComponent} from '../app/components/pretrazi-lokacije/pretrazi-lokacije.component'
+import {PregledAvanturaComponent} from '../app/components/pregled-avantura/pregled-avantura.component'
+import {AvanturaComponent} from '../app/components/avantura/avantura.component'
+import {KalkulatorComponent} from '../app/components/kalkulator/kalkulator.component'
+import {PosecenoComponent} from '../app/components/poseceno/poseceno.component'
+import {OstaliPosecenoComponent} from '../app/components/ostali-poseceno/ostali-poseceno.component'
+import {DodajAvanturuComponent} from '../app/components/dodaj-avanturu/dodaj-avanturu.component'
+import {ProsecneCeneComponent} from '../app/components/prosecne-cene/prosecne-cene.component'
+import { ContentComponent } from './components/content/content.component';
 
 
 const routes: Routes = [

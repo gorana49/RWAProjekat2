@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { User } from '../models/user';
-import { LoginTextService } from '../services/loginText.service';
+import { User } from '../../models/user';
+import { LoginTextService } from '../../services/loginText.service';
 
 @Component({
   selector: 'register',
