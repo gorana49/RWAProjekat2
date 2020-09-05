@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { IAuthKorisnikGraphic, AuthKorisnikGraphic } from '../../models/auth-korisnik-graphic';
 import {AuthKorisnikGraphicResponse} from "../../models/auth-korisnik-graphic-response"
-import {LoginService} from "./login.service"
+import {LoginGraphService} from "../../services/loginGraph.service"
 import { ɵangular_packages_platform_browser_platform_browser_j } from '@angular/platform-browser';
 
 
@@ -15,7 +15,7 @@ export class LoginGraphicComponent implements OnInit {
   userRequest:AuthKorisnikGraphic;
   errorMessage: string;
   userResponse: AuthKorisnikGraphicResponse;
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginGraphService) { }
   identifikator: number;
   ngOnInit(): void {
   }

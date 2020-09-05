@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "gocki",
+      "sifra": "gocki",
+      "role": "korisnik"
+    },
+    {
+      "id": 2,
+      "username": "zeljko",
+      "sifra": "zeljko",
+      "role": "turistInfo"
+    },
+    {
+      "id": 3,
+      "username": "miki",
+      "email": "violetaradovanovic@gmail.com",
+      "password": "mikimiki",
+      "role": "korisnik",
+      "roleflag": true,
+      "pib": "0202010506",
+      "poseceno": [],
+      "komentari": []
+    }
+  ]
+}

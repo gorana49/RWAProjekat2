@@ -7,10 +7,11 @@
         <button  class="login-graph-button" (click)="showLogInModalGraph()" mat-raised-button>
             Login Graph
         </button>
-        <button  class="register-button" mat-raised-button>
+        <button  class="register-button" (click)="showRegisterModal()" mat-raised-button>
             Register
         </button>
     </div>
 </div>
 <login-text *ngIf='displayLogIn' (cancelClicked)='hideLogInModal()'></login-text>
 <login-graphic *ngIf='displayLogInGraph' (cancelClicked)='hideLogInModalGraph()'></login-graphic>
+<register *ngIf='displayRegister' (cancelClicked)='hideRegisterModal()'></register>

@@ -1,0 +1,49 @@
+<div class="korisnik wrapper">
+    <nav id="sidebar">
+        <ul class="list-unstyled components">
+            <p>MENI</p>
+            <li>
+                <a routerLink="/korisnik">Pregled okruga</a>
+            </li>
+            <li>
+                <a routerLink="/korisnik/kalkulator">Kalkulator</a>
+            </li>
+            <li>
+                <a routerLink="/korisnik/poseceno">Posecene lokacije</a>
+            </li>
+            <li>
+                <a routerLink="/korisnik/ostaliPoseceno">Prijatelji</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button type="button" id="sidebarCollapse" class="btn btn-info dugmence" (click)="collapseMenu();">
+                <i class="fa fa-align-justify"></i> <span>MENI</span>
+            </button>   
+            <div class="heder">
+                <div class="user">
+                     Korisnik
+                </div>
+             </div>       
+        </nav>
+        <div class="line"></div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div class="footer">
+    <label class="footer-label">© 2020 gorana, Inc</label>
+</div>
+
+<!-- <div  *ngIf='showAreYouSure' class='info-modal-background'>
+    <div class='info-modal'>
+        <div class="info-modal-header">
+            <span class="info-cancel" (click)="cancelClicked();" >&times;</span>
+        </div>
+        <label class="info-labela">Da li ste sigurni da želite da se izlogujete?</label>
+        <div class="info-modal-main">
+            <button class="info-btn" type="submit" (click)="logOut();">Log Out</button>
+        </div>
+    </div>
+</div>  -->

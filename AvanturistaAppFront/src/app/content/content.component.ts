@@ -9,20 +9,23 @@ export class ContentComponent implements OnInit {
 
   displayLogIn:boolean; 
   displayLogInGraph: boolean;
+  displayRegister:boolean;
 
   constructor() {
     this.displayLogIn = false;
     this.displayLogInGraph = false;
+    this.displayRegister=false;
   }
   ngOnInit(): void {
   }
-
   showLogInModal(): void {
     this.displayLogIn = true;
   }
-
   showLogInModalGraph():void{
     this.displayLogInGraph = true;
+  }
+  showRegisterModal():void{
+    this.displayRegister = true;
   }
   hideLogInModal(): void {
     this.displayLogIn = false;
@@ -30,5 +33,7 @@ export class ContentComponent implements OnInit {
   hideLogInModalGraph(): void {
     this.displayLogInGraph = false;
   }
-
+  hideRegisterModal(): void {
+    this.displayRegister = false;
+  }
 }

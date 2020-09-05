@@ -1,0 +1,33 @@
+<div class="korisnik wrapper">
+    <nav id="sidebar">
+        <ul class="list-unstyled components">
+            <p>MENI</p>
+            <li>
+                <a routerLink ="/turistInfo">Home</a>
+            </li>
+            <li>
+                <a routerLink="/turistInfo/dodajAvanturu">Dodaj Avanturu</a>
+            </li>
+            <li>
+                <a routerLink="/turistInfo/prosecneCene">Cene</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button type="button" id="sidebarCollapse" class="btn btn-info dugmence" (click)="collapseMenu();">
+                <i class="fa fa-align-justify"></i> <span>MENI</span>
+            </button>   
+            <div class="heder">
+                <div class="user">
+                     Turist Info
+                </div>
+             </div>       
+        </nav>
+        <div class="line"></div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div class="footer">
+    <label class="footer-label">© 2020 gorana, Inc</label>
+</div>

@@ -1,0 +1,305 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+.lekar{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f7ebca;
+}
+
+body{font-family: 'Poppins', sans-serif;
+     background: #f7ebca}
+p{font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1.7em;
+	color: #999;
+}
+
+a,
+a:hover,
+a:focus{
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+.navbar{
+	padding: 15px 10px;
+	background: #fff;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.navbar-btn{
+	box-shadow: none;
+	outline: none!important;
+	border: none;
+}
+
+.line{
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px dashed #ddd;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: rgb(197, 67, 28);
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar.active{
+	margin-left: -250px;
+}
+
+#sidebar{
+	padding: 20px;
+	background: rgb(197, 67, 28);
+}
+#sidebar ul.components{
+	padding: 20px 0px;
+	border-bottom: 1px solid rgb(197, 67, 28);
+}
+
+#sidebar ul p{
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+
+#sidebar ul li a{
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+#sidebar ul li a:hover {
+    color: rgb(197, 67, 28);
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(197, 67, 28);
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background-color: rgb(197, 67, 28);
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+a.download{
+	background-color: #fff;
+	color: rgb(197, 67, 28);
+}
+a.article,
+a.article:hover {
+    background-color: rgb(197, 67, 28) !important;
+    color: #fff !important;
+}
+
+.content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+@media(maz-width:768px){
+	#sidebar{margin-left: -250px;}
+	#sidebar.active{
+		margin-left: 0px;
+	}
+	#sidebarCollapse span{
+		display: none;
+	}
+}
+
+.topnav {
+    overflow: hidden;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #4CAF50;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .dugmence{
+    background-color: rgb(207, 76, 36);
+    color: ivory;
+}
+
+.dugmence:hover{
+    background-color: rgb(197, 67, 28);
+}
+
+.heder{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 95%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.trudnica-icon{
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 160px;
+    background-color: rgb(185, 69, 34);
+    color: white;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+ }
+
+.footer-label{
+     color:rgb(201, 201, 201);
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+ 
+ .info-modal-background{
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background-color: rgba(32, 31, 31, 0.5);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+   
+  }
+  
+  .info-modal{
+    width: 500px;
+    height: 200px ;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    background-color:white;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Century Gothic';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .info-modal-header{
+    width: 500px;
+    height:20px;
+    padding: 0px;
+    font-family: 'Century Gothic';
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 35px;
+    display:flex;
+    flex-direction: row;
+   
+  }
+  
+  .info-cancel{
+    cursor: pointer;
+    color: #ccc;
+    position: absolute;
+    top: 0;
+    right:15px;
+    font-size: 40px;   
+  }
+  
+  .info-cancel:hover{
+    color:rgb(145, 140, 140);
+  }
+
+  .info-labela{
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  .info-btn{
+    padding:0px;
+    margin: 8px;
+    width: 160px;
+    height: 45px;
+    border-radius: 22px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    align-self: center;
+    border-color: rgb(128, 44, 19);
+    background-color:#f7ebca ;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    border-color: rgb(197, 67, 28);
+  }
+  
+  .info-btn:hover{
+    background-color:#d8b98a;
+  }
+  
+  .info-modal-main{
+    padding: 10px;
+    font-family: 'Century Gothic';
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
