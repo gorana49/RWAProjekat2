@@ -29,7 +29,7 @@ export class komentariEffects{
             map((action)=>action.mycomment),
             mergeMap((newComment)=>this.commentsService.postComment(newComment)
             .pipe(
-                map((newComment)=>({type:CommentsActionsTypes.ADD_COMMENT_SUCCESS,mycomment:newComment}))
+                map((newComment)=>({type:CommentsActionsTypes.ADD_COMMENT_SUCCESS, mycomment:newComment}))
                 )
             )
         )

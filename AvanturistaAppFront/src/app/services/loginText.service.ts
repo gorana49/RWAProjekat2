@@ -21,10 +21,10 @@ export class LoginTextService {
         this.http=http;
        }
 
-    getUser(authkorisnik: IAuthKorisnik): Observable<AuthKorisnikResponse> {
+    getUser(authkorisnik: IAuthKorisnik): Observable<User> {
         console.log(authkorisnik);
         let url = users_url + `?username=${authkorisnik.Username}&&sifra=${authkorisnik.Sifra}`;
-        return this.http.get<AuthKorisnikResponse>(url);
+        return this.http.get<User>(url);
     }
     public userRegistration(user:User):Observable<User>{
         return this.http.post<User>(`${users_url}`,user);

@@ -1,5 +1,5 @@
   
-interface Avantura{
+export interface Avantura{
     id:number,
     naslov:string,
     lokacija:string,

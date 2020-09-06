@@ -1,4 +1,4 @@
-import {createEntityAdapter} from '@ngrx/entity';
+import {createEntityAdapter, EntityState} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
 import { komentar } from '../../../app/models/komentar'
 
@@ -7,9 +7,7 @@ export const commentsAdapter = createEntityAdapter<komentar>({
    sortComparer:sortByDate
 });
 
-export interface KomentariState {
-    ids:number[],
-    entities:{[key:number]:komentar}
+export interface KomentariState extends EntityState<komentar> {
 };
 
 function sortByDate(e1: komentar, e2: komentar) {
@@ -27,3 +25,5 @@ const {
 
 export const selectAllComments=selectAll;
 export const selectTotalComments=selectTotal;
+export const selectIdsComments=selectIds;
+export const selectEntitiesComments = selectEntities;

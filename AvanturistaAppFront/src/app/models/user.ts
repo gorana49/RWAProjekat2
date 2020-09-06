@@ -1,3 +1,5 @@
+import { identifierModuleUrl } from '@angular/compiler';
+
 export interface User
 {
     id?:number;
@@ -20,4 +22,18 @@ export class User implements User{
     pib:string;
     poseceno: [];
     komentari: [];
+
+    constructor(id:number, username:string, password:string, email:string, role:string, roleflag:boolean, pib:string){// poseceno:[], komentari:[]) {
+        this.id= id,
+        this.username = username,
+        this.password = password,
+        this.email = email,
+        this.role = role, 
+        this.roleflag = roleflag,
+        this.pib = pib,
+       // this.poseceno = poseceno,
+        //this.komentari = komentari
+    }
 }
+
+
