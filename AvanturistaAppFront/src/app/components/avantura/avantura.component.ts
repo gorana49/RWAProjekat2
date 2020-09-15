@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Avantura } from 'src/app/models/avantura';
 
 @Component({
   selector: 'app-avantura',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvanturaComponent implements OnInit {
 
+  @Input()
+  avanture:Avantura;
   constructor() { }
 
   ngOnInit(): void {

@@ -21,16 +21,18 @@ export class LoginTextService {
         this.http=http;
        }
 
+       public GetUserById(id:number):Observable<User>{
+        return this.http.get<User>(`${users_url}?id=${id}`);
+       }
     getUser(authkorisnik: IAuthKorisnik): Observable<User> {
-        console.log(authkorisnik);
         let url = users_url + `?username=${authkorisnik.Username}&&sifra=${authkorisnik.Sifra}`;
-        return this.http.get<User>(url);
+        return this.http.get<User>(url);    
     }
     public userRegistration(user:User):Observable<User>{
         return this.http.post<User>(`${users_url}`,user);
       }
 
-      public updateUser(user:User):Observable<User>{
+    public updateUser(user:User):Observable<User>{
         return this.http.put<User>(`${users_url}/${user.id}`,user,httpOptions);
        }
     logout(): void{

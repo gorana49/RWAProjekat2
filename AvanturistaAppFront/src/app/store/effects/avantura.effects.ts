@@ -18,7 +18,8 @@ export class AvantureEffects{
                 map(avanture=>({
                     type:AvantureActionsTypes.UCITAJ_SVE_AVANTURE_USPESNO,
                     avanture:avanture
-                }))
+                }
+                ))
                 )
             )
         )

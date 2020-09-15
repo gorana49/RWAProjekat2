@@ -3,25 +3,32 @@ import {Effect,Actions, ofType, createEffect} from '@ngrx/effects';
 import {tap} from 'rxjs/operators';
 import {map,mergeMap} from 'rxjs/operators';
 import {LoginTextService} from '../../services/loginText.service'
-import {UserActionsTypes,LoginUser, DodajKomentar, DodajAvanturu} from '../actions/user.actions'
+import {UserActionsTypes, DodajKomentar, DodajMojuAvanturu, LoadUser} from '../actions/user.actions'
 
 
 @Injectable()
-export class UserEffects{
-
-    @Effect({dispatch:false})
-        login$ = this.actions$.pipe(
-            ofType<LoginUser>(UserActionsTypes.LOGIN_USER),
-            tap(action=> localStorage.setItem("user",JSON.stringify(action.payload.user))));
+export class UserEffects{    
+    getUserById=createEffect(()=>    this.actions$.pipe(
+    ofType<LoadUser>(UserActionsTypes.LOAD_USER),
+    map((action)=>action.id),
+        mergeMap((id)=>this.userService.GetUserById(id)
+            .pipe(
+                map((user)=>({
+                type:UserActionsTypes.LOAD_USER_SUCCESS,
+                user:user
+            }))
+            ))
+        )
+    )
     
-    addToMyPublications=createEffect(()=>
+    addToMyAdventures=createEffect(()=>
     this.actions$.pipe(
-        ofType<DodajAvanturu>(UserActionsTypes.DODAJ_AVANTURU),
+        ofType<DodajMojuAvanturu>(UserActionsTypes.DODAJ_MOJU_AVANTURU),
         map((action)=>action.user),
         mergeMap((user)=>this.userService.updateUser(user)
         .pipe(
             map((user)=>({
-                type:UserActionsTypes.DODAJ_AVANTURU_USPESNO,
+                type:UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO,
                 user:user
             }))
             )

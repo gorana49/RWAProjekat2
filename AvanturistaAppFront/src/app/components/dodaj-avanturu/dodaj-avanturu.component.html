@@ -1,1 +1,31 @@
-<p>dodaj-avanturu works!</p>
+<div class="container fluid px-5 py-2 text-center" style="width: 500px">
+    <p *ngIf="emptyFields" style="background-color: rgb(245, 96, 96)" class="border border-danger rounded">
+      Popuniti prazna polja!
+    </p>
+    <h4>Dodajte novu avanturu za vasu lokaciju</h4>
+    <form class= "formaReg" [formGroup]="avantura" (ngSubmit)="onSubmit()">
+          <label class="mt-3">
+            Naslov:
+          </label>
+          <input type="text" class="form-control" placeholder="Enter title"  formControlName="naslov">
+        <label class="mt-3">
+            Lokacija:
+        </label>
+        <input type="text" class="form-control" formControlName="lokacija">
+        <label class="mt-3">
+            Tezina:
+        </label>
+        <input type="text" class="form-control" formControlName="tezina">
+          <label class="mt-3">
+            Trajanje:
+          </label>
+          <input type="number" class="form-control"  placeholder="Enter duration"  formControlName="trajanje">
+          <label class="mt-3">
+            Opis:
+          </label>
+          <input type="text" class="form-control"  placeholder="Enter duration"  formControlName="description">
+        <button class="btn btn-primary mt-3" type="submit" >
+          Prihvati
+        </button> 
+      </form>
+    </div>          

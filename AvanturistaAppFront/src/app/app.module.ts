@@ -26,7 +26,12 @@ import {OstaliPosecenoComponent} from '../app/components/ostali-poseceno/ostali-
 import {DodajAvanturuComponent} from '../app/components/dodaj-avanturu/dodaj-avanturu.component'
 import {ProsecneCeneComponent} from '../app/components/prosecne-cene/prosecne-cene.component'
 import {komentariEffects} from '../app/store/effects/komentari.effects'
-import {AvantureEffects} from '../app/store/effects/avantura.effects'
+import {AvantureEffects} from '../app/store/effects/avantura.effects';
+import { DetailComponent } from '../app/components/detail/detail.component';
+import { CommentFormComponent } from '../app/components/comment-form/comment-form.component';
+import { CommentListComponent } from '../app/components/comment-list/comment-list.component';
+import { CommentComponent } from '../app/components/comment/comment.component'
+import { mainReducer } from './store/reducers/main.reducer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +49,11 @@ import {AvantureEffects} from '../app/store/effects/avantura.effects'
     PosecenoComponent,
     OstaliPosecenoComponent,
     DodajAvanturuComponent,
-    ProsecneCeneComponent
+    ProsecneCeneComponent,
+    DetailComponent,
+    CommentFormComponent,
+    CommentListComponent,
+    CommentComponent
   ],
   imports: [
     AppRoutingModule,
@@ -53,7 +62,7 @@ import {AvantureEffects} from '../app/store/effects/avantura.effects'
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(mainReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),

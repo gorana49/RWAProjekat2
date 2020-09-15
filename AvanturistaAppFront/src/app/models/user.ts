@@ -9,8 +9,9 @@ export interface User
     role:string;
     roleflag:boolean;
     pib:string;
-    poseceno: [];
-    komentari: [];
+    poseceno :Array<number>;
+    komentari: number[];
+   // addVisited(advantureNumber:number);
 }
 export class User implements User{
     id?:number;
@@ -20,20 +21,17 @@ export class User implements User{
     role:string;
     roleflag:boolean;
     pib:string;
-    poseceno: [];
-    komentari: [];
-
-    constructor(id:number, username:string, password:string, email:string, role:string, roleflag:boolean, pib:string){// poseceno:[], komentari:[]) {
-        this.id= id,
-        this.username = username,
-        this.password = password,
-        this.email = email,
-        this.role = role, 
-        this.roleflag = roleflag,
-        this.pib = pib,
-       // this.poseceno = poseceno,
-        //this.komentari = komentari
+    poseceno :Array<number>;
+    komentari: number[];
+ //ovo su sve pokušaji koji nisu uspeli
+    constructor(){
+       // this.poseceno = [];
     }
+
+    // addVisited(advantureNumber:number):any
+    // {
+    //     this.poseceno.push(advantureNumber);
+    // }
 }
 
 

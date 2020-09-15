@@ -4,7 +4,6 @@ export interface Avantura{
     naslov:string,
     lokacija:string,
     tezina:number,
-    cena:number,
     trajanje:string,
     isAvailable:boolean,
     description:string,

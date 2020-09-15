@@ -1,5 +1,5 @@
 export interface komentar{
-    id?:number;
+    id:number;
     avanturaId:number;
     datumObjave:string;
     username:string;

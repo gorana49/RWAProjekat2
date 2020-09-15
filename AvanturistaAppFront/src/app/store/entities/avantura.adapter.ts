@@ -23,5 +23,5 @@ const {
     selectTotal
 } = avantureAdapter.getSelectors(getCommentState);
 
-export const selectAllAvanture=selectEntities;
+export const selectAllAvanture=selectAll;
 export const selectTotalAvanture=selectTotal;

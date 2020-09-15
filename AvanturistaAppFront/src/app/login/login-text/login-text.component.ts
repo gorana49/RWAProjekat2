@@ -3,10 +3,10 @@ import {LoginTextService} from "../../services/loginText.service"
 import { Store } from '@ngrx/store';
 import {State} from '../../store/reducers/main.reducer'
 import { AuthKorisnik } from 'src/app/models/auth-korisnik';
-import {LoginUser} from '../../store/actions/user.actions';
 import {tap} from 'rxjs/operators'
 import { noop } from 'rxjs';
 import { Router } from '@angular/router';
+import { LoadUser } from 'src/app/store/actions/user.actions';
 @Component({
   selector: 'login-text',
   templateUrl: './login-text.component.html',
@@ -30,19 +30,12 @@ export class LoginTextComponent implements OnInit {
 
   login()
   {
-    let authKor = new AuthKorisnik("gocki", "gocki");
-    this.auth.getUser(authKor)
-    .pipe(
-      tap(user => {
-          this.store.dispatch(new LoginUser({user}))
-          console.log(user[0].role);
-          this.router.navigate([`/${user[0].role}`])
-      })
-    )
-    .subscribe(
-    noop, 
-    ()=> alert("Neuspelo logovanje!")
-    );
+    let authKor = new AuthKorisnik("zeljko", "zeljko");
+    var User= this.auth.getUser(authKor);
+    User.subscribe(user=>{
+       localStorage.setItem("id", user[0].id);
+       localStorage.setItem("LoggedSuccess", "true");
+      this.router.navigate([`/${user[0].role}`])
+    })
   }
-
 }

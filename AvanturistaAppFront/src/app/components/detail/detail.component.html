@@ -1,0 +1,45 @@
+<div class="container fluid px-5 py-2 text-center ">
+    <h1>Avantura: {{avanture.naslov}}</h1>
+    <p><small>Nalazi se na lokaciji: {{avanture.lokacija}}</small></p>
+    <div class="row justify-content-center mt-5">
+      <div class="card mb-3 " style="max-width: 540px;">
+        <div class="row no-gutters">
+          <!-- <div class="col-md-4">
+            <img src="{{avantura.imageUrl}}" class="card-img" alt="...">
+          </div> -->
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Opis:</h5>
+              <p class="card-text">{{avanture.description}}</p>
+              <div class="dropdown-divider"></div>
+              <p class="card-text m-0">Trajanje: {{avanture.trajanje}}  
+              </p>
+              <p class="card-text m-0">Tezina: {{avanture.tezina}}</p>
+              <p class="card-text m-0">Dostupna: 
+                <span > 
+                  Da
+                </span> 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <app-comment-form [avantura]="avanture"></app-comment-form>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="container">
+      <h5>-Komentari korisnika-</h5>
+      <app-comment-list [comments]="comments"></app-comment-list>
+    </div>
+</div>
+<ng-template #noCourse>
+    <div class="container fluid px-5 py-2 text-center">
+        <h1>There is no course!</h1>
+    </div>
+</ng-template>
+
+<ng-template #availabeFalse>
+    <span>No</span>
+</ng-template>

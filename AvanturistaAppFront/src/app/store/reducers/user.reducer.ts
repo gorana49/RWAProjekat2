@@ -1,23 +1,25 @@
-import {UserActions,UserActionsTypes, LoginUser, DodajKomentarUspesno, DodajAvanturuUspesno} from '../actions/user.actions';
+import {UserActions,UserActionsTypes, DodajKomentarUspesno, DodajMojuAvanturuUspesno, LoadUserSuccess, LoadUser} from '../actions/user.actions';
 import {AuthState} from '../../models/auth-state'
+import { User } from 'src/app/models/user';
 
-
-export function userReducer(state:AuthState=null,action:UserActions): AuthState {
-
+export let initialState:AuthState = {
+    loggedIn:false,
+    user: undefined 
+}
+export function userReducer(state:AuthState=initialState,action:UserActions): AuthState {
     switch(action.type){
-        case UserActionsTypes.LOGIN_USER:
-            {
-                state.loggedIn = true;
-                state.user =action.payload.user;
-                return state;
+        case UserActionsTypes.LOAD_USER_SUCCESS:{
+            return{
+                loggedIn:true,
+                user: action.user
             }
-
+        }         
         case UserActionsTypes.USER_LOGOUT:{
             return null;
         }
-        case UserActionsTypes.DODAJ_AVANTURU_USPESNO:{
-            const {user} = action as DodajAvanturuUspesno;
-            let st = new AuthState(true, user);
+        case UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO:{
+            const user = action as DodajMojuAvanturuUspesno;
+            let st = new AuthState(true, user.user);
             return st;
         }
         case UserActionsTypes.DODAJ_KOMENTAR_USPESNO:{

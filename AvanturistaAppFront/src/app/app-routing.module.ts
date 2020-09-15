@@ -12,6 +12,7 @@ import {OstaliPosecenoComponent} from '../app/components/ostali-poseceno/ostali-
 import {DodajAvanturuComponent} from '../app/components/dodaj-avanturu/dodaj-avanturu.component'
 import {ProsecneCeneComponent} from '../app/components/prosecne-cene/prosecne-cene.component'
 import { ContentComponent } from './components/content/content.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,7 @@ const routes: Routes = [
     component:  TuristInfoMainComponent,
     children: [
       {path: '', component: PregledAvanturaComponent},
-      {path: 'avantura', component: AvanturaComponent},
+      { path: 'detail/:id', component: DetailComponent },
       {path: 'dodajAvanturu', component: DodajAvanturuComponent},
       {path: 'prosecneCene', component: ProsecneCeneComponent}
     ]

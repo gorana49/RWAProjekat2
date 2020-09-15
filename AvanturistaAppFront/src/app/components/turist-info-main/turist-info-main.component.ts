@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AvanturaState, selectAllAvanture } from 'src/app/store/entities/avantura.adapter';
 import { Avantura } from 'src/app/models/avantura';
-import { LoginUser } from 'src/app/store/actions/user.actions';
+import { LoadUser } from 'src/app/store/actions/user.actions';
 import { User } from 'src/app/models/user';
 import { identifierModuleUrl } from '@angular/compiler';
 import { localizedString } from '@angular/compiler/src/output/output_ast';
@@ -23,5 +23,7 @@ export class TuristInfoMainComponent implements OnInit {
   }
  
   ngOnInit() { 
+    let pomocna = localStorage.getItem("id");
+    this.store.dispatch(new LoadUser(Number(pomocna[0])))
   }
 }
