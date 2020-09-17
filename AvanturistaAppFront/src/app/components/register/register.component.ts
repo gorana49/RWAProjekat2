@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
             role:"korisnik",
             roleflag:false,
             pib:this.user.value.pib,
-            poseceno:[],
+            visited:[],
             komentari:[]
           }  
         }
@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
           role:"turistInfo",
           roleflag:false,
           pib:"",
-          poseceno:[],
+          visited:[],
           komentari:[]
         }  
       }

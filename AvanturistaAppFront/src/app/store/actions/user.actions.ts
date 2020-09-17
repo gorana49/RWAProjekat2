@@ -2,7 +2,6 @@ import { Action } from '@ngrx/store';
 import {User} from '../../models/user'
 
 export enum UserActionsTypes{
-    //LOGIN_USER='[Login User]',
     USER_LOGOUT='[User Logout]',
     DODAJ_MOJU_AVANTURU = '[Dodaj Avanturu]',
     DODAJ_MOJU_AVANTURU_USPESNO = '[Dodaj Avanturu Uspesno]',
@@ -25,12 +24,12 @@ export class LoadUserSuccess implements Action{
 
 export class DodajMojuAvanturu implements Action{
     readonly type=UserActionsTypes.DODAJ_MOJU_AVANTURU;
-    constructor(public user:User){}
+    constructor(public user:User){console.log(user)}
 }
 
 export class DodajMojuAvanturuUspesno implements Action{
     readonly type=UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO;
-    constructor(public user:User){        console.log(user);}
+    constructor(public user:User){ console.log(user)}
 }
 
 export class DodajKomentar implements Action{

@@ -1,14 +1,14 @@
 export interface IAuthKorisnik{
-    Username:string;
-    Sifra:string;
+    username:string;
+    password:string;
 }
 
 export class AuthKorisnik implements IAuthKorisnik{
-    Username: string;
-    Sifra: string;
+    username: string;
+    password: string;
 
     constructor(user: string, pass: string){
-        this.Username = user;
-        this.Sifra = pass;
+        this.username = user;
+        this.password = pass;
     }
 }

@@ -6,10 +6,9 @@ import { selectTotalAvanture } from 'src/app/store/entities/avantura.adapter';
 import { Store} from '@ngrx/store';
 import { Router } from '@angular/router';
 import { State } from 'src/app/store/reducers/main.reducer';
-import { User } from 'src/app/models/user';
+import { IUser, User } from 'src/app/models/user';
 import { DodajMojuAvanturu } from 'src/app/store/actions/user.actions';
 import {DodajAvanturu} from '../../store/actions/avanture.actions'
-
 @Component({
   selector: 'app-dodaj-avanturu',
   templateUrl: './dodaj-avanturu.component.html',
@@ -30,26 +29,22 @@ export class DodajAvanturuComponent implements OnInit {
   description: new FormControl('')
   })
   constructor( private store:Store<State>,private router: Router) { 
-  
-    this.user = new User();
   }
 
   ngOnInit(): void {
     this.emptyFields=false;
      this.store.select(selectTotalAvanture)
      .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
-       this.store.select(state=>state.auth.user).subscribe(user=>
-       {
-         if(user != null && user != undefined)
+       this.store.select(state=>state.auth.user).subscribe(user=>{
+         if(user!= null || user!=undefined)
          {
-           this.user = user[0];
-           console.log(typeof(this.user));
+          this.user = new User(user);
          }
-       });
-
+       })
   }
   onSubmit(){
-    if(this.handleError()){
+        if(this.handleError() == true)
+        {
           this.newAvantura={
             id:0,
             naslov:this.avantura.value.naslov,
@@ -59,22 +54,28 @@ export class DodajAvanturuComponent implements OnInit {
             isAvailable:true,
             description:this.avantura.value.description,
           }
-          if(this.user != null && this.user!= undefined)
+
+          if((this.user != null) || (this.user!= undefined) || this.avantura.value.lokacija.naslov==0 )
           {
-           console.log(this.user);
-          this.user.poseceno.push(this.numberOfEntities+1);
+          this.user.visited = [...this.user.visited, this.numberOfEntities+1];
+
           this.store.dispatch(new DodajMojuAvanturu(this.user));
+          //ovde je rešenje 2 baze
+          
           this.store.dispatch(new DodajAvanturu(this.newAvantura));
+          
           this.router.navigate(['/turistInfo'])
           }
-        };
-      }
+        }
+   }
+
+
    handleError(){
-    if(this.avantura.value.lokacija.length===0
-      || this.avantura.value.naslov.length===0
-      || this.avantura.value.description.length===0){
-        return false;
+    if(this.avantura.value.lokacija.length!=0
+      && this.avantura.value.naslov.length!=0
+      && this.avantura.value.description.length!=0){
+        return true;
       }
-      return true;
+      return false;
   }
 }

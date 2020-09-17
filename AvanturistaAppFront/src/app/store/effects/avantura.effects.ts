@@ -10,6 +10,7 @@ import {AvantureActionsTypes,DodajAvanturu, UpdateAvanturu} from '../actions/ava
 export class AvantureEffects{
 
     constructor(private actions$:Actions,private avantureService:AvanturaService){}
+    
     getAvanture=createEffect(()=>
         this.actions$.pipe(
             ofType(AvantureActionsTypes.UCITAJ_SVE_AVANTURE),
@@ -30,7 +31,7 @@ export class AvantureEffects{
         map((action)=>action.avantura),
         mergeMap((novaAvantura)=>this.avantureService.dodajAvanturu(novaAvantura)
         .pipe(
-            map((avantura)=>({
+            map(avantura=>({
                 type:AvantureActionsTypes.DODAJ_AVANTURU_USPESNO,
                 avantura:avantura
             }))

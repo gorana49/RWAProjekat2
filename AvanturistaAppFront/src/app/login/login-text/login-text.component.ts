@@ -30,12 +30,15 @@ export class LoginTextComponent implements OnInit {
 
   login()
   {
-    let authKor = new AuthKorisnik("zeljko", "zeljko");
+    let authKor = new AuthKorisnik("gocki", "gocki");
     var User= this.auth.getUser(authKor);
     User.subscribe(user=>{
-       localStorage.setItem("id", user[0].id);
-       localStorage.setItem("LoggedSuccess", "true");
-      this.router.navigate([`/${user[0].role}`])
+      if(user!= null || user!= undefined)
+      {
+        localStorage.setItem("id", user[0].id);
+        localStorage.setItem("LoggedSuccess", "true");
+        this.router.navigate([`/${user[0].role}`])
+      }
     })
   }
 }

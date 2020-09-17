@@ -23,12 +23,10 @@ const routes: Routes = [
     component: KorisnikMainComponent,
     children: [
       {path: '', component: IstraziSrbijuComponent},
-      {path: 'pretraziLokacije', component: PretraziLokacijeComponent},
       {path: 'pregledAvantura', component: PregledAvanturaComponent},
-      {path: 'avantura', component: AvanturaComponent},
-      {path: 'kalkulator', component: KalkulatorComponent},
-      {path: 'poseceno', component: PosecenoComponent},
-      {path: 'ostaliPoseceno', component: OstaliPosecenoComponent},
+      {path: 'kalkulator', component: KalkulatorComponent}, //kada se planira odmor,cene
+      {path: 'poseceno', component: PosecenoComponent}, //dodajemo sliku da smo posetili neku avanturu
+      {path: 'ostaliPoseceno', component: OstaliPosecenoComponent}, //ovo je kao feed na insta
     ]
   },
   {
@@ -37,8 +35,9 @@ const routes: Routes = [
     children: [
       {path: '', component: PregledAvanturaComponent},
       { path: 'detail/:id', component: DetailComponent },
-      {path: 'dodajAvanturu', component: DodajAvanturuComponent},
-      {path: 'prosecneCene', component: ProsecneCeneComponent}
+      {path: 'poseceno', component: PosecenoComponent},  //ovde se iscrtavaju moje avanture
+      {path: 'dodajAvanturu', component: DodajAvanturuComponent}, 
+      {path: 'prosecneCene', component: ProsecneCeneComponent} //dodavanje prosecnih cena na toj lokaciji
     ]
   },
   {path: '**', redirectTo: 'content', pathMatch: 'full'}

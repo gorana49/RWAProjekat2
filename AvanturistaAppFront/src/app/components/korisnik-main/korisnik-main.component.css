@@ -1,9 +1,4 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-.lekar{
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f7ebca;
-}
 
 body{font-family: 'Poppins', sans-serif;
      background: #f7ebca}
@@ -23,7 +18,7 @@ a:focus{
 }
 .navbar{
 	padding: 15px 10px;
-	background: #fff;
+	background: rgb(39, 39, 46);;
 	border: none;
 	border-radius: 0;
 	margin-bottom: 20px;
@@ -50,7 +45,7 @@ a:focus{
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: rgb(197, 67, 28);
+    background:#ee8104;;
     color: #fff;
     transition: all 0.3s;
 }
@@ -60,11 +55,11 @@ a:focus{
 
 #sidebar{
 	padding: 20px;
-	background: rgb(197, 67, 28);
+  background:#ee8104;
 }
 #sidebar ul.components{
 	padding: 20px 0px;
-	border-bottom: 1px solid rgb(197, 67, 28);
+  background:#ee8104;
 }
 
 #sidebar ul p{
@@ -79,14 +74,14 @@ a:focus{
 	display: block;
 }
 #sidebar ul li a:hover {
-    color: rgb(197, 67, 28);
+    color: #ee8104;
     background: #fff;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: rgb(197, 67, 28);
+    background:#ee8104;
 }
 a[data-toggle="collapse"] {
     position: relative;
@@ -102,7 +97,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background-color: rgb(197, 67, 28);
+    background: #ee8104;
 }
 
 ul.CTAs {
@@ -118,15 +113,16 @@ ul.CTAs a {
 }
 a.download{
 	background-color: #fff;
-	color: rgb(197, 67, 28);
+  background: #ee8104;
 }
 a.article,
 a.article:hover {
-    background-color: rgb(197, 67, 28) !important;
+  background: #ee8104 !important;
     color: #fff !important;
 }
 
 .content {
+    background-color:rgb(39, 39, 46);
     width: 100%;
     padding: 20px;
     min-height: 100vh;
@@ -167,12 +163,12 @@ a.article:hover {
   }
 
   .dugmence{
-    background-color: rgb(207, 76, 36);
+    background-color: #ee8104;
     color: ivory;
 }
 
 .dugmence:hover{
-    background-color: rgb(197, 67, 28);
+  background-color: #ee8104;
 }
 
 .heder{
@@ -287,7 +283,7 @@ a.article:hover {
     text-align: center;
     cursor: pointer;
     transition-duration: 0.2s;
-    border-color: rgb(197, 67, 28);
+    border-color: #ee8104;
   }
   
   .info-btn:hover{

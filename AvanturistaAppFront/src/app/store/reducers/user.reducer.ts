@@ -18,13 +18,16 @@ export function userReducer(state:AuthState=initialState,action:UserActions): Au
             return null;
         }
         case UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO:{
-            const user = action as DodajMojuAvanturuUspesno;
-            let st = new AuthState(true, user.user);
+            const {user} = action as DodajMojuAvanturuUspesno;
+            let st = new AuthState(true, user);
+            console.log(st);
             return st;
         }
         case UserActionsTypes.DODAJ_KOMENTAR_USPESNO:{
-            const {user} = action as DodajKomentarUspesno;
-            let st = new AuthState(true, user);
+           
+            let user = action as DodajKomentarUspesno;
+            console.log(user);
+            let st = new AuthState(true, user.user);
             return st;
         }
         default:

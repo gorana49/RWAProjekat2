@@ -1,6 +1,5 @@
-import { identifierModuleUrl } from '@angular/compiler';
 
-export interface User
+export interface IUser
 {
     id?:number;
     username:string;
@@ -9,11 +8,10 @@ export interface User
     role:string;
     roleflag:boolean;
     pib:string;
-    poseceno :Array<number>;
-    komentari: number[];
-   // addVisited(advantureNumber:number);
+    visited:number[];
+    komentari:Array<number>;
 }
-export class User implements User{
+export class User implements IUser{
     id?:number;
     username:string;
     password:string;
@@ -21,17 +19,17 @@ export class User implements User{
     role:string;
     roleflag:boolean;
     pib:string;
-    poseceno :Array<number>;
-    komentari: number[];
- //ovo su sve pokušaji koji nisu uspeli
-    constructor(){
-       // this.poseceno = [];
-    }
+    visited:Array<number> = [];
+    komentari:Array<number>;
 
-    // addVisited(advantureNumber:number):any
-    // {
-    //     this.poseceno.push(advantureNumber);
-    // }
+    constructor(values: User = null) {
+        if(values != null)
+        {
+            Object.assign(this, values);
+            this.visited = values[0].visited;
+            this.komentari = values[0].komentari;
+        }
+    }
 }
 
 

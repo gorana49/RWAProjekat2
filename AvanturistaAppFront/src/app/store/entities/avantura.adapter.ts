@@ -14,14 +14,14 @@ function sortById(e1: Avantura, e2: Avantura) {
     return e2.id - e1.id
 }
 
-export const getCommentState= createFeatureSelector<AvanturaState>('avanture');
+export const getAdvantureState= createFeatureSelector<AvanturaState>('avanture');
 
 const {
     selectIds,
     selectEntities,
     selectAll,
     selectTotal
-} = avantureAdapter.getSelectors(getCommentState);
+} = avantureAdapter.getSelectors(getAdvantureState);
 
 export const selectAllAvanture=selectAll;
 export const selectTotalAvanture=selectTotal;

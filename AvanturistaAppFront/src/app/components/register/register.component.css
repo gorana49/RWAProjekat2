@@ -6,32 +6,35 @@
     background-color: rgba(32, 31, 31, 0.5);
     position: absolute;
     display: flex;
+    z-index: 3;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-   
+    align-items: center; 
 }
-
 .register-modal{
-    width: 500px;
-    height: 300px ;
+    z-index: 4;
+    width: 600px;
+    height: 500px ;
     padding: 10px;
     padding-bottom: 20px;
     border-radius: 4px;
-    background-color:white;
+    background-color:rgb(39, 39, 46);
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
     text-align: center;
     font-family: 'Century Gothic';
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: center; 
     position: relative;
+}
+.formaReg
+{
+    justify-content: space-around;
 }
 
 .register-modal-header{
     width: 500px;
-    height:20px;
+    height:10px;
     padding: 0px;
     font-family: 'Century Gothic';
     text-transform: uppercase;
@@ -42,6 +45,45 @@
    
 }
 
+.reg-labela
+{
+    margin: 10px;
+    font-size: 15px;
+    color:white;
+}
+
+.reg-labelaTitle
+{
+    font-size: 20px;
+    text-transform: uppercase;
+    color:white;
+}
+.form-control
+{
+    width: 400px;
+    height: 20px;
+    display:block;
+    margin: 7px auto;
+    border-radius: 4px;
+    border-color: #ee8104;
+}
+.reg-button
+{
+    padding:0px;
+    margin: 8px;
+    width: 160px;
+    height: 45px;
+    border-radius: 22px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    align-self: center;
+    border-color: #ffd416;
+    background-color:#f7ebca ;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    border-color: #ee8104;
+}
 .register-cancel{
     cursor: pointer;
     color: #ccc;
@@ -77,10 +119,6 @@
 {
     display: flex;
     flex-direction: column;
-}
-.mt-3
-{
-
 }
 .log-loginBtn{
     padding:0px;

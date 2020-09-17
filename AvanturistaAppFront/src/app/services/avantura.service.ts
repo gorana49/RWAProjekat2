@@ -26,8 +26,12 @@ export class AvanturaService {
    }
 
    public dodajAvanturu(avantura:Avantura):Observable<Avantura>{
-    return this.http.post<Avantura>(avantura_url,avantura)
-   }
+    if(avantura != null && avantura != undefined)
+    {
+      console.log("Avantura pre nego udje u post");
+      return this.http.post<Avantura>(avantura_url,avantura)
+    }
+  }
 
    public updateAvanturu(avantura:Avantura):Observable<any>{
     return this.http.put<Avantura>(`${avantura_url}/${avantura.id}`,avantura,httpOptions)

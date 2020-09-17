@@ -1,36 +1,30 @@
 {
   "users": [
     {
+      "visited": [
+        2
+      ],
       "id": 1,
       "username": "gocki",
-      "sifra": "gocki",
-      "role": "korisnik"
-    },
-    {
-      "id": 2,
-      "username": "zeljko",
-      "sifra": "zeljko",
+      "password": "gocki",
+      "email": "gocki",
+      "pib": "02020105067",
       "role": "turistInfo",
       "roleflag": true,
-      "pib": "0202010506",
-      "poseceno": [
-        1
-      ],
       "komentari": [
-        2
       ]
     },
     {
-      "id": 3,
-      "username": "miki",
-      "email": "violetaradovanovic@gmail.com",
-      "password": "mikimiki",
-      "role": "turistInfo",
-      "roleflag": true,
-      "pib": "0202010506",
-      "poseceno": [
+      "visited": [
         1
       ],
+      "id": 2,
+      "username": "zeljko",
+      "password": "zeljko",
+      "email": "gocki",
+      "pib": "0202010506",
+      "role": "turistInfo",
+      "roleflag": true,
       "komentari": [
         2
       ]
@@ -45,6 +39,15 @@
       "trajanje": "160 min",
       "isAvailable": true,
       "description": "Najlepsi vidikovac na Kopaoniku, nedaleko od centra."
+    },
+    {
+      "id": 2,
+      "naslov": "fefwf",
+      "lokacija": "wdf",
+      "tezina": "fewf",
+      "trajanje": 4,
+      "isAvailable": true,
+      "description": "fasdf"
     }
   ],
   "comments": [
@@ -56,39 +59,11 @@
       "comment": "This is a Complete course on angular. perfect examples and assignments. Great job Milos and team !!"
     },
     {
-      "id": 1,
-      "avanturaId": 2,
-      "datumObjave": "16042008",
-      "username": "gocki",
-      "comment": "This is a Complete course on angular. perfect examples and assignments. Great job Milos and team !!"
-    },
-    {
-      "id": 3,
-      "avanturaId": 3,
-      "datumObjave": "1561126220500",
-      "username": "gocki",
-      "comment": "This is a Complete course on angular. perfect examples and assignments. Great job Milos and team !!"
-    },
-    {
-      "id": 4,
-      "avanturaId": 1,
-      "datumObjave": "1599424588708",
-      "username": "gocki",
-      "comment": "Nadamo se uspehu na ispitu"
-    },
-    {
-      "id": 5,
-      "avanturaId": 1,
-      "datumObjave": "1599424928282",
+      "id": 2,
+      "avanturaId": 6,
+      "datumObjave": "1600273386986",
       "username": "zeljko",
-      "comment": "Da li ste sigurni"
-    },
-    {
-      "id": 6,
-      "avanturaId": 1,
-      "datumObjave": "1599429592374",
-      "username": "zeljko",
-      "comment": "dsadasdsa"
+      "comment": "sdsadfaws"
     }
   ]
 }

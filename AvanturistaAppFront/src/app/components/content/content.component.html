@@ -1,17 +1,21 @@
 <div class= "content-container">
-    <div class="content-picture-container"> </div>
-    <div class="content-log-reg-div"> 
-        <button  class="login-text-button" (click)="showLogInModal()" mat-raised-button>
-            Login
-        </button>
-        <button  class="login-graph-button" (click)="showLogInModalGraph()" mat-raised-button>
-            Login Graph
-        </button>
-        <button  class="register-button" (click)="showRegisterModal()" mat-raised-button>
-            Register
-        </button>
+    <div class="content-picture-container">
+        <div class="logo-image">
+            <img class="logo-image-image"src="../../assets/logo.png">
+        </div>
+        <div class="content-description">
+            Dobrodošli! Na korak ste od planiranja Vaše nezaboravne avanture!
+        </div>
+        <div class="content-log-reg-div"> 
+            <div class="content-title">Prijava/Registracija</div>
+            <button  class="login-text-button" (click)="showLogInModal()" mat-raised-button>
+                Login
+            </button>
+            <button  class="register-button" (click)="showRegisterModal()" mat-raised-button>
+                Register
+            </button>
+        </div>
     </div>
 </div>
 <login-text *ngIf='displayLogIn' (cancelClicked)='hideLogInModal()'></login-text>
-<login-graphic *ngIf='displayLogInGraph' (cancelClicked)='hideLogInModalGraph()'></login-graphic>
 <register *ngIf='displayRegister' (cancelClicked)='hideRegisterModal()'></register>

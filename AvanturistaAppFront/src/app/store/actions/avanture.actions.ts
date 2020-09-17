@@ -18,7 +18,7 @@ export class UcitajSveAvanture implements Action{
 
 export class UcitajSveAvantureUspesno implements Action{
     readonly type=AvantureActionsTypes.UCITAJ_SVE_AVANTURE_USPESNO;
-    constructor(public avanture:Avantura[]){console.log(avanture)}
+    constructor(public avanture:Avantura[]){}
 }
 
 export class UpdateAvanturu implements Action{

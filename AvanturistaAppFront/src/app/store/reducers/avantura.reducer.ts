@@ -13,7 +13,7 @@ export function avanturaReducer(state:AvanturaState=initialState,action:Avanture
             return avantureAdapter.addOne(action.avantura, state)
         }
         case AvantureActionsTypes.UCITAJ_SVE_AVANTURE_USPESNO:{
-            return avantureAdapter.addAll(action.avanture,state)
+            return avantureAdapter.setAll(action.avanture,state)
         }
          case AvantureActionsTypes.UPDATE_AVANTURU_USPESNO:{
              return avantureAdapter.updateOne({
