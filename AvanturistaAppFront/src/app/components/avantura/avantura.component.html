@@ -1,18 +1,18 @@
 <div class="card m-1" style="width: 18rem;">
     <!-- <img src= {{avantura.imageUrl}} class="card-img-top" alt="..." style="width: 18rem;height:230px"> -->
     <div class="card-body">
-      <h5 class="card-title">{{avanture.naslov}}</h5>
+      <h5 class="card-title">{{adventure.title}}</h5>
       <p class="card-text" >
-        Tezina ove avanture je: {{avanture.tezina}}
+        Tezina ove avanture je: {{adventure.level}}
       </p>
       <p class="card-text" >
-        Trajanje {{avanture.trajanje}}
+        Trajanje {{adventure.duration}}
       </p>
       <ng-template >
         <p class="card-text">
-          Opis: {{avanture.opis}} 
+          Opis: {{adventure.description}} 
         </p>
       </ng-template>
-      <a routerLink="/turistInfo/detail/{{avanture.id}}" class="btn btn-primary">Detaljnije</a>
+      <a routerLink="/turistInfo/detail/{{adventure.id}}" class="btn btn-primary">Detaljnije</a>
     </div>
   </div>

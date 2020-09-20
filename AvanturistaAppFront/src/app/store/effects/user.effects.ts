@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Effect,Actions, ofType, createEffect} from '@ngrx/effects';
 import {switchMap, tap} from 'rxjs/operators';
 import {map,mergeMap} from 'rxjs/operators';
-import {LoginTextService} from '../../services/loginText.service'
+import {UserService} from '../../services/user.service'
 import {UserActionsTypes, DodajKomentar, DodajMojuAvanturu, LoadUser} from '../actions/user.actions'
 
 
@@ -24,17 +24,19 @@ export class UserEffects{
     addToMyAdventures=createEffect(()=>
     this.actions$.pipe(
         ofType<DodajMojuAvanturu>(UserActionsTypes.DODAJ_MOJU_AVANTURU),
-        //map((action)=>action.user),
-        mergeMap(user=> this.userService.updateUser(user.user).pipe(
-            map(user => ({
-                type:UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO,
-                user:user
-            }))))))
+        map((action)=>action.user),
+        mergeMap(user=> this.userService.updateUser(user).pipe(
+            map(user => {
+                return { 
+                    type:UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO,
+                    user:user
+                };
+            })))))
 
-    addToMyComments=createEffect(()=>
+    addToMyComments=createEffect(()=> 
     this.actions$.pipe(
         ofType<DodajKomentar>(UserActionsTypes.DODAJ_KOMENTAR),
-        map((action)=>action.user),
+        map((action)=> action.user ),
         mergeMap((user)=>this.userService.updateUser(user)
         .pipe(
             map((user)=>({
@@ -45,5 +47,5 @@ export class UserEffects{
         )
         )
     )
-    constructor(private actions$:Actions,private userService:LoginTextService){ }
+    constructor(private actions$:Actions,private userService:UserService){ }
 }

@@ -15,7 +15,9 @@ export class ContentComponent implements OnInit {
     this.displayRegister=false;
   }
   ngOnInit(): void {
+    localStorage.clear();
   }
+
   showLogInModal(): void {
     this.displayLogIn = true;
   }

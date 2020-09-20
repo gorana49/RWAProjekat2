@@ -1,7 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../../models/user';
-import { LoginTextService } from '../../services/loginText.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'register',
@@ -9,25 +10,27 @@ import { LoginTextService } from '../../services/loginText.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   newUser:User;
   emptyFields:boolean;
   passwordError:boolean;
   writePIB:boolean;
+  registerUserForm:FormGroup;
+  constructor(private userService:UserService, private fb:FormBuilder, private router:Router) {
+    
+    this.registerUserForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.length === 6],
+      email: ['', Validators.required],
+      role:[''],
+      pib: ['']
+    });
 
-    user:FormGroup = new FormGroup({
-    email:new FormControl(''),
-    username:new FormControl(''),
-    password:new FormControl(''),
-    role:new FormControl(''),
-    pib: new FormControl('')
-  })
-  constructor(private userService:LoginTextService) { }
+   }
 
   ngOnInit(): void {
-
-    if(localStorage.getItem("auth.loggedIn")){
-     //ovde rutiramo na home
+    if(localStorage.getItem("LoggedIn") === "true"){
+     let role = localStorage.getItem("Role");
+     this.router.navigate(['/'+ role]);
     }
     this.writePIB = false;
     this.emptyFields=false;
@@ -36,19 +39,18 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     if(this.handleError() && this.handlePasswordError()){
-
-      if(this.writePIB == true)
+      if(this.writePIB === true)
       {
-        if(this.checkPIB())
+        if(this.checkPIB() === true)
         {
           this.newUser={
             id:0,
-            username:this.user.value.username,
-            email:this.user.value.email,
-            password:this.user.value.password,
-            role:"korisnik",
-            roleflag:false,
-            pib:this.user.value.pib,
+            username:this.registerUserForm.value.username,
+            email:this.registerUserForm.value.email,
+            password:this.registerUserForm.value.password,
+            role:"turistInfo",
+            roleflag:true,
+            pib:this.registerUserForm.value.pib,
             visited:[],
             komentari:[]
           }  
@@ -60,49 +62,57 @@ export class RegisterComponent implements OnInit {
       else{
         this.newUser={
           id:0,
-          username:this.user.value.username,
-          email:this.user.value.email,
-          password:this.user.value.password,
-          role:"turistInfo",
+          username:this.registerUserForm.value.username,
+          email:this.registerUserForm.value.email,
+          password:this.registerUserForm.value.password,
+          role:"korisnik",
           roleflag:false,
           pib:"",
           visited:[],
           komentari:[]
         }  
-      }
-       this.userService.userRegistration(this.newUser)
+      };
+
+      this.userService.userRegistration(this.newUser)
        .subscribe(user=>{
-          //ovde treba da se sredi to sta sve pamtimo u store za user-a  
-        //localStorage.setItem("auth.user", user);
-             localStorage.setItem("auth.user.Id", user.id.toString());
-             localStorage.setItem("auth.user.Username", user.username);
-             localStorage.setItem("auth.user.Role",user.role.toString());
-             localStorage.setItem("auth.loggedIn", "true");
-             window.location.reload();
-           //  this.router.navigate(['/home'])
+         if(user)
+         {
+          localStorage.setItem("Id", user.id.toString());
+          localStorage.setItem("Username", user.username);
+          localStorage.setItem("Role",user.role.toString());
+          localStorage.setItem("LoggedIn", "true");
+         // window.location.reload();
+          this.router.navigate(['/'+ user.role])
+         }
+        else {
+          alert("Korisnik sa ovim korisnickim imenom vec postoji!");
+          this.router.navigate(['']);
+        }
        })
-    }else{
+      }
+      else
+      {
        this.emptyFields=true
-     }
+      }
    }
 
    checkPIB()
    {
-     if(this.user.value.pib.length === 10)
+     if(this.registerUserForm.value.pib.length === 10)
        return true;
     return false;
    }
    handleError(){
-    if(this.user.value.username.length===0
-      || this.user.value.email.length===0
-      || this.user.value.password.length===0){
+    if(this.registerUserForm.value.username.length===0
+      || this.registerUserForm.value.email.length===0
+      || this.registerUserForm.value.password.length===0){
         return false;
       }
       return true;
   }
 
   handlePasswordError(){
-    if(this.user.value.password.length<6){
+    if(this.registerUserForm.value.password.length<6){
       this.passwordError=true;
       return false;
     }

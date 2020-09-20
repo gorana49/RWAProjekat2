@@ -26,8 +26,8 @@ export class User implements IUser{
         if(values != null)
         {
             Object.assign(this, values);
-            this.visited = values[0].visited;
-            this.komentari = values[0].komentari;
+             this.visited = values.visited;
+             this.komentari = values.komentari;
         }
     }
 }

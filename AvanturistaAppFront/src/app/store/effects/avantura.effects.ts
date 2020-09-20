@@ -1,55 +1,56 @@
 import { Injectable } from '@angular/core';
 import {Effect,Actions, ofType, createEffect} from '@ngrx/effects';
-import {AvanturaService} from '../../services/avantura.service';
+import {AdventureService} from '../../services/avantura.service';
 import {map,mergeMap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import {AvantureActionsTypes,DodajAvanturu, UpdateAvanturu} from '../actions/avanture.actions'
+import {AdventureActionsTypes,AddAdventure, UpdateAdventure} from '../actions/adventures.actions'
 
 @Injectable()
 export class AvantureEffects{
 
-    constructor(private actions$:Actions,private avantureService:AvanturaService){}
+    constructor(private actions$:Actions,private adventureService:AdventureService){}
     
-    getAvanture=createEffect(()=>
+    getAdventures=createEffect(()=>
         this.actions$.pipe(
-            ofType(AvantureActionsTypes.UCITAJ_SVE_AVANTURE),
-            mergeMap(()=>this.avantureService.getAllAvanture()
+            ofType(AdventureActionsTypes.LOAD_ALL_ADVENTURES),
+            mergeMap(()=>this.adventureService.getAllAdventures()
             .pipe(
                 map(avanture=>({
-                    type:AvantureActionsTypes.UCITAJ_SVE_AVANTURE_USPESNO,
-                    avanture:avanture
+                    type:AdventureActionsTypes.LOAD_ALL_ADVENTURES_SUCCESS,
+                    adventures:avanture
                 }
                 ))
                 )
             )
         )
     )
-    dodajAvanturu=createEffect(()=>
+
+    addAdventure=createEffect(()=>
     this.actions$.pipe(
-        ofType<DodajAvanturu>(AvantureActionsTypes.DODAJ_AVANTURU),
-        map((action)=>action.avantura),
-        mergeMap((novaAvantura)=>this.avantureService.dodajAvanturu(novaAvantura)
+        ofType<AddAdventure>(AdventureActionsTypes.ADD_ADVENTURE),
+        map((action)=>action.adventure),
+        mergeMap((newAdventure)=>this.adventureService.addAdventure(newAdventure)
         .pipe(
             map(avantura=>({
-                type:AvantureActionsTypes.DODAJ_AVANTURU_USPESNO,
-                avantura:avantura
+                type:AdventureActionsTypes.ADD_ADVENTURE_SUCCESS,
+                adventure:avantura
             }))
             )
         )
         )
     )
 
-    updatePublication=createEffect(()=>
+    updateAdventure=createEffect(()=>
     this.actions$.pipe(
-        ofType<UpdateAvanturu>(AvantureActionsTypes.UPDATE_AVANTURU),
-        map((action)=>action.updatedAvantura),
-        mergeMap((updatedAvantura)=>this.avantureService.updateAvanturu(updatedAvantura)
+        ofType<UpdateAdventure>(AdventureActionsTypes.UPDATE_ADVENTURE),
+        map((action)=>action.updatedAdventure),
+        mergeMap((updatedAvantura)=>this.adventureService.updateAdventure(updatedAvantura)
         .pipe(
-            map((publication)=>({
-                type:AvantureActionsTypes.UPDATE_AVANTURU_USPESNO,
-                id:publication.id,
-                updatedAvantura:publication
+            map((avantura)=>({
+                type:AdventureActionsTypes.UPDATE_ADVENTURE_SUCCESS,
+                id:avantura.id,
+                updatedAvantura:avantura
             }))
             )
         )

@@ -1,12 +1,14 @@
 import { Component, OnInit, EventEmitter,Output } from '@angular/core';
-import {LoginTextService} from "../../services/loginText.service"
+import {UserService} from "../../services/user.service"
 import { Store } from '@ngrx/store';
 import {State} from '../../store/reducers/main.reducer'
-import { AuthKorisnik } from 'src/app/models/auth-korisnik';
-import {tap} from 'rxjs/operators'
+import { LoggingUser } from 'src/app/models/logging-user';
+import {map, tap} from 'rxjs/operators'
 import { noop } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoadUser } from 'src/app/store/actions/user.actions';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IUser } from 'src/app/models/user';
 @Component({
   selector: 'login-text',
   templateUrl: './login-text.component.html',
@@ -14,9 +16,15 @@ import { LoadUser } from 'src/app/store/actions/user.actions';
 })
 export class LoginTextComponent implements OnInit {
 
-  
-  constructor(private auth:LoginTextService,
-              private store: Store<State>, private router:Router) { }
+  loggingUserForm: FormGroup;
+  loggingUser: LoggingUser
+  constructor(private userService:UserService,
+              private store: Store<State>, private router:Router, private fb:FormBuilder) {
+                this.loggingUserForm = this.fb.group({
+                  username: ['', Validators.required],
+                  password: ['', Validators.length === 6]
+                });
+  }
 
   ngOnInit(): void {
   }
@@ -28,17 +36,20 @@ export class LoginTextComponent implements OnInit {
   this.cancelClicked.emit();
   }
 
-  login()
+  onSubmit()
   {
-    let authKor = new AuthKorisnik("gocki", "gocki");
-    var User= this.auth.getUser(authKor);
-    User.subscribe(user=>{
-      if(user!= null || user!= undefined)
+    this.loggingUser={
+      username:this.loggingUserForm.value.username,
+      password:this.loggingUserForm.value.password
+    }
+    this.userService.getUser(this.loggingUser)
+    .subscribe(user=> {
+      if(user)
       {
-        localStorage.setItem("id", user[0].id);
-        localStorage.setItem("LoggedSuccess", "true");
-        this.router.navigate([`/${user[0].role}`])
+        localStorage.setItem("Id", user.id.toString());
+        localStorage.setItem("LoggedIn", "true");
+        localStorage.setItem("Role", user.role);
+        this.router.navigate([`/${user.role}`]);
       }
-    })
-  }
+      })}
 }

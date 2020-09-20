@@ -1,9 +1,9 @@
-export interface IAuthKorisnik{
+export interface ILoggingUser{
     username:string;
     password:string;
 }
 
-export class AuthKorisnik implements IAuthKorisnik{
+export class LoggingUser implements ILoggingUser{
     username: string;
     password: string;
 

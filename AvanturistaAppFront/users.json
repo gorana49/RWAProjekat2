@@ -2,7 +2,7 @@
   "users": [
     {
       "visited": [
-        2
+        3
       ],
       "id": 1,
       "username": "gocki",
@@ -11,8 +11,7 @@
       "pib": "02020105067",
       "role": "turistInfo",
       "roleflag": true,
-      "komentari": [
-      ]
+      "komentari": []
     },
     {
       "visited": [
@@ -28,26 +27,28 @@
       "komentari": [
         2
       ]
-    }
-  ],
-  "avanture": [
-    {
-      "id": 1,
-      "naslov": "Obilazak Markovog kamena",
-      "lokacija": "Kopaonik",
-      "tezina": "srednje tesko",
-      "trajanje": "160 min",
-      "isAvailable": true,
-      "description": "Najlepsi vidikovac na Kopaoniku, nedaleko od centra."
     },
     {
-      "id": 2,
-      "naslov": "fefwf",
-      "lokacija": "wdf",
-      "tezina": "fewf",
-      "trajanje": 4,
+      "id": 3,
+      "username": "Milica Mladenov",
+      "email": "milicamladenov@gmail.com",
+      "password": "milicamladenov",
+      "role": "turistInfo",
+      "roleflag": true,
+      "pib": "Nova Varoš",
+      "visited": [],
+      "komentari": []
+    }
+  ],
+  "adventures": [
+    {
+      "id": 1,
+      "title": "Obilazak Markovog kamena",
+      "location": "Kopaonik",
+      "level": "srednje tesko",
+      "duration": "160 min",
       "isAvailable": true,
-      "description": "fasdf"
+      "description": "Najlepsi vidikovac na Kopaoniku, nedaleko od centra."
     }
   ],
   "comments": [
@@ -64,6 +65,13 @@
       "datumObjave": "1600273386986",
       "username": "zeljko",
       "comment": "sdsadfaws"
+    },
+    {
+      "id": 3,
+      "avanturaId": 1,
+      "datumObjave": "1600537355950",
+      "username": "gocki",
+      "comment": "erweqertwty"
     }
   ]
 }

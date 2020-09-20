@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Avantura } from 'src/app/models/avantura';
+import { Adventure } from 'src/app/models/adventure';
 
 @Component({
   selector: 'app-avantura',
@@ -9,10 +9,9 @@ import { Avantura } from 'src/app/models/avantura';
 export class AvanturaComponent implements OnInit {
 
   @Input()
-  avanture:Avantura;
+  adventure:Adventure;
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

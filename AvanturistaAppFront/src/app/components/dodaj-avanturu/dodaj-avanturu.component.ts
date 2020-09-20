@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Avantura } from 'src/app/models/avantura';
-import { FormGroup, FormControl } from '@angular/forms';
-import { AvanturaService } from 'src/app/services/avantura.service';
-import { selectTotalAvanture } from 'src/app/store/entities/avantura.adapter';
+import { Adventure } from 'src/app/models/adventure';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { AdventureService } from 'src/app/services/avantura.service';
+import { selectTotalAdventures } from 'src/app/store/entities/avantura.adapter';
 import { Store} from '@ngrx/store';
 import { Router } from '@angular/router';
 import { State } from 'src/app/store/reducers/main.reducer';
 import { IUser, User } from 'src/app/models/user';
-import { DodajMojuAvanturu } from 'src/app/store/actions/user.actions';
-import {DodajAvanturu} from '../../store/actions/avanture.actions'
+import { DodajMojuAvanturu, DodajMojuAvanturuUspesno } from 'src/app/store/actions/user.actions';
+import {AddAdventure, AddAdventureSuccess} from '../../store/actions/adventures.actions'
+import { of } from 'rxjs';
 @Component({
   selector: 'app-dodaj-avanturu',
   templateUrl: './dodaj-avanturu.component.html',
@@ -16,66 +17,52 @@ import {DodajAvanturu} from '../../store/actions/avanture.actions'
 })
 
 export class DodajAvanturuComponent implements OnInit {
-  newAvantura:Avantura;
+  newAvantura:Adventure;
   emptyFields:boolean;
   numberOfEntities:number;
   user:User;
-
-  avantura:FormGroup = new FormGroup({
-  naslov:new FormControl(''),
-  lokacija:new FormControl(''),
-  tezina:new FormControl(''),
-  trajanje:new FormControl(''),
-  description: new FormControl('')
-  })
-  constructor( private store:Store<State>,private router: Router) { 
+  adventure:FormGroup;
+  constructor( private store:Store<State>,private router: Router, private fb: FormBuilder) { 
+    this.adventure = this.fb.group({
+      naslov: ['', Validators.required],
+      lokacija: '',
+      tezina: '',
+      trajanje: '',
+      description: ''
+    });
   }
 
   ngOnInit(): void {
     this.emptyFields=false;
-     this.store.select(selectTotalAvanture)
+     this.store.select(selectTotalAdventures)
      .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
        this.store.select(state=>state.auth.user).subscribe(user=>{
-         if(user!= null || user!=undefined)
+         if(user)
          {
           this.user = new User(user);
          }
        })
   }
   onSubmit(){
-        if(this.handleError() == true)
-        {
+      //  if(this.handleError() == true)
+      //  {
           this.newAvantura={
             id:0,
-            naslov:this.avantura.value.naslov,
-            lokacija:this.avantura.value.lokacija,
-            tezina:this.avantura.value.tezina, 
-            trajanje:this.avantura.value.trajanje,
+            title:this.adventure.value.title,
+            location:this.adventure.value.location,
+            level:this.adventure.value.level, 
+            duration:this.adventure.value.duration,
             isAvailable:true,
-            description:this.avantura.value.description,
+            description:this.adventure.value.description,
           }
-
-          if((this.user != null) || (this.user!= undefined) || this.avantura.value.lokacija.naslov==0 )
+          if(this.user)
           {
           this.user.visited = [...this.user.visited, this.numberOfEntities+1];
-
+          this.store.dispatch(new AddAdventure(this.newAvantura));
+          //SRPSKI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           this.store.dispatch(new DodajMojuAvanturu(this.user));
-          //ovde je rešenje 2 baze
-          
-          this.store.dispatch(new DodajAvanturu(this.newAvantura));
-          
-          this.router.navigate(['/turistInfo'])
+          this.router.navigate(['/turistInfo']);
           }
-        }
+       // }
    }
-
-
-   handleError(){
-    if(this.avantura.value.lokacija.length!=0
-      && this.avantura.value.naslov.length!=0
-      && this.avantura.value.description.length!=0){
-        return true;
-      }
-      return false;
-  }
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AvanturaState, selectAllAvanture } from 'src/app/store/entities/avantura.adapter';
+import { AdventureState, selectAllAdventure } from 'src/app/store/entities/avantura.adapter';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Dictionary } from '@ngrx/entity';
-import { Avantura } from 'src/app/models/avantura';
+import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
 import { LoadUser } from 'src/app/store/actions/user.actions';
 
@@ -14,12 +14,12 @@ import { LoadUser } from 'src/app/store/actions/user.actions';
   styleUrls: ['./pregled-avantura.component.css']
 })
 export class PregledAvanturaComponent implements OnInit {
-  constructor(private store:Store<AvanturaState>,
+  constructor(private store:Store<AdventureState>,
     private router: Router) {}
-  avanture$:Observable<Avantura[]>;
+  avanture$:Observable<Adventure[]>;
   ngOnInit(): void {
-    this.avanture$=this.store.select(selectAllAvanture);
-    if(localStorage.getItem("auth.loggedIn")!=="true"){
+    this.avanture$=this.store.select(selectAllAdventure);
+    if(localStorage.getItem("LoggedIn")!=="true"){
       this.router.navigate(['/content'])
     }
   }

@@ -1,24 +1,24 @@
-import {AvantureActions,AvantureActionsTypes} from '../actions/avanture.actions';
-import {AvanturaState,avantureAdapter} from '../entities/avantura.adapter'
+import {AdventureActions,AdventureActionsTypes} from '../actions/adventures.actions';
+import {AdventureState,adventureAdapter} from '../entities/avantura.adapter'
 
-export const initialState:AvanturaState={
+export const initialState:AdventureState={
     ids:[],
     entities:{}
 }
 
-export function avanturaReducer(state:AvanturaState=initialState,action:AvantureActions) {
+export function avanturaReducer(state:AdventureState=initialState,action:AdventureActions) {
 
     switch(action.type){
-        case AvantureActionsTypes.DODAJ_AVANTURU_USPESNO:{
-            return avantureAdapter.addOne(action.avantura, state)
+        case AdventureActionsTypes.ADD_ADVENTURE_SUCCESS:{
+            return adventureAdapter.addOne(action.adventure, state)
         }
-        case AvantureActionsTypes.UCITAJ_SVE_AVANTURE_USPESNO:{
-            return avantureAdapter.setAll(action.avanture,state)
+        case AdventureActionsTypes.LOAD_ALL_ADVENTURES_SUCCESS:{
+            return adventureAdapter.setAll(action.adventure,state)
         }
-         case AvantureActionsTypes.UPDATE_AVANTURU_USPESNO:{
-             return avantureAdapter.updateOne({
+         case AdventureActionsTypes.UPDATE_ADVENTURE_SUCCESS:{
+             return adventureAdapter.updateOne({
                  id:action.id,
-                 changes:action.updatedAvanture
+                 changes:action.updatedAdventure
              },state)
          }
         default:

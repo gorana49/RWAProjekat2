@@ -1,12 +1,12 @@
 import {CommentsActions, CommentsActionsTypes} from '../actions/komentar.actions';
-import {KomentariState,commentsAdapter} from '../entities/komentar.adapter'
+import {CommentState,commentsAdapter} from '../entities/komentar.adapter'
 
-export const initialState:KomentariState={
+export const initialState:CommentState={
     ids:[],
     entities:{}
 }
 
-export function komentarReducer(state:KomentariState=initialState,action:CommentsActions) {
+export function komentarReducer(state:CommentState=initialState,action:CommentsActions) {
 
     switch(action.type){
         case CommentsActionsTypes.ADD_COMMENT_SUCCESS:{

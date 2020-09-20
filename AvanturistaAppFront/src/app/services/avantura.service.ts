@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import {komentar} from '../models/komentar'
+import {Comment} from '../models/komentar'
 import { urlAdresa } from '../constants/url'
-import { Avantura } from '../models/avantura';
+import { Adventure } from '../models/adventure';
 
-const avantura_url=urlAdresa.AVANTURA_URL;
+const adventure_url = urlAdresa.ADVENTURE_URL;
 const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -15,26 +15,23 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class AvanturaService {
+export class AdventureService {
 
-  constructor(private http:HttpClient) {
-    this.http=http;
+  constructor(private http:HttpClient) {}
+
+   public getAllAdventures():Observable<Adventure[]>{
+    return this.http.get<Adventure[]>(adventure_url);
    }
 
-   public getAllAvanture():Observable<Avantura[]>{
-    return this.http.get<Avantura[]>(avantura_url);
-   }
-
-   public dodajAvanturu(avantura:Avantura):Observable<Avantura>{
-    if(avantura != null && avantura != undefined)
+   public addAdventure(adventure:Adventure):Observable<Adventure>{
+    if(adventure)
     {
-      console.log("Avantura pre nego udje u post");
-      return this.http.post<Avantura>(avantura_url,avantura)
+      return this.http.post<Adventure>(adventure_url,adventure)
     }
   }
-
-   public updateAvanturu(avantura:Avantura):Observable<any>{
-    return this.http.put<Avantura>(`${avantura_url}/${avantura.id}`,avantura,httpOptions)
+  
+   public updateAdventure(adventure:Adventure):Observable<any>{
+    return this.http.put<Adventure>(`${adventure_url}/${adventure.id}`,adventure,httpOptions)
   }
 
 }

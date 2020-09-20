@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { komentar } from 'src/app/models/komentar';
+import { Comment } from 'src/app/models/komentar';
 
 @Component({
   selector: 'app-comment-list',
@@ -9,7 +9,7 @@ import { komentar } from 'src/app/models/komentar';
 })
 export class CommentListComponent implements OnInit {
   @Input()
-  comments:Observable<komentar[]>;
+  comments:Observable<Comment[]>;
   constructor() { }
   
   ngOnInit(): void {

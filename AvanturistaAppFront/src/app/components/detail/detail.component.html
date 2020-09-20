@@ -1,6 +1,6 @@
-<div class="container fluid px-5 py-2 text-center ">
-    <h1>Avantura: {{avanture.naslov}}</h1>
-    <p><small>Nalazi se na lokaciji: {{avanture.lokacija}}</small></p>
+<div class="container fluid px-5 py-2 text-center " *ngIf="adventure">
+    <h1>Avantura: {{adventure.title}}</h1>
+    <p><small>Nalazi se na lokaciji: {{adventure.location}}</small></p>
     <div class="row justify-content-center mt-5">
       <div class="card mb-3 " style="max-width: 540px;">
         <div class="row no-gutters">
@@ -10,11 +10,11 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Opis:</h5>
-              <p class="card-text">{{avanture.description}}</p>
+              <p class="card-text">{{adventure.description}}</p>
               <div class="dropdown-divider"></div>
-              <p class="card-text m-0">Trajanje: {{avanture.trajanje}}  
+              <p class="card-text m-0">Trajanje: {{adventure.duration}}  
               </p>
-              <p class="card-text m-0">Tezina: {{avanture.tezina}}</p>
+              <p class="card-text m-0">Tezina: {{adventure.level}}</p>
               <p class="card-text m-0">Dostupna: 
                 <span > 
                   Da
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="container">
-      <app-comment-form [avantura]="avanture"></app-comment-form>
+      <app-comment-form [adventure]="adventure"></app-comment-form>
     </div>
     <div class="dropdown-divider"></div>
     <div class="container">

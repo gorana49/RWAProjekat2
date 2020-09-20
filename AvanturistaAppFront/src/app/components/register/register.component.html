@@ -4,7 +4,7 @@
             <span (click)="cancelLogIn()" class="register-cancel">&times;</span>
         </div>
         <label class= "reg-labelaTitle">Registracija</label>
-        <form class= "formaReg" [formGroup]="user" (ngSubmit)="onSubmit()">
+        <form class= "formaReg" [formGroup]="registerUserForm" (ngSubmit)="onSubmit()">
               <label class="reg-labela">
                 Username:
               </label>
@@ -31,10 +31,7 @@
                   Password:
                 </label>
                 <input type="password" class="form-control"  placeholder="Enter password"  formControlName="password">
-                <!-- <p *ngIf="passwordError" style="background-color: rgb(245, 96, 96)" class="border border-danger rounded">
-                  <small>Your password must be at least 6 characters long.</small>
-                </p> -->
-              <button class="reg-button" type="submit" [disabled]="!user.valid">
+              <button class="reg-button" type="submit">
                 Prihvati
               </button> 
             </form>        

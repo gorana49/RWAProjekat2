@@ -6,7 +6,7 @@ export let initialState:AuthState = {
     loggedIn:false,
     user: undefined 
 }
-export function userReducer(state:AuthState=initialState,action:UserActions): AuthState {
+export function userReducer(state:AuthState=initialState,action:UserActions): any {
     switch(action.type){
         case UserActionsTypes.LOAD_USER_SUCCESS:{
             return{
@@ -20,7 +20,7 @@ export function userReducer(state:AuthState=initialState,action:UserActions): Au
         case UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO:{
             const {user} = action as DodajMojuAvanturuUspesno;
             let st = new AuthState(true, user);
-            console.log(st);
+            console.log('test', st, action);
             return st;
         }
         case UserActionsTypes.DODAJ_KOMENTAR_USPESNO:{

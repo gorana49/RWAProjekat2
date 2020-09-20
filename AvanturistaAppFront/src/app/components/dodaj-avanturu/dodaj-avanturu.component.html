@@ -3,27 +3,27 @@
       Popuniti prazna polja!
     </p>
     <h4>Dodajte novu avanturu za vasu lokaciju</h4>
-    <form class= "formaReg" [formGroup]="avantura" (ngSubmit)="onSubmit()">
+    <form class= "formaReg" [formGroup]="adventure" (ngSubmit)="onSubmit()">
           <label class="mt-3">
             Naslov:
           </label>
-          <input type="text" class="form-control" placeholder="Enter title"  formControlName="naslov">
+          <input type="text" class="form-control" placeholder="Enter title"  formControlName="title">
         <label class="mt-3">
             Lokacija:
         </label>
-        <input type="text" class="form-control" formControlName="lokacija">
+        <input type="text" class="form-control" formControlName="location">
         <label class="mt-3">
             Tezina:
         </label>
-        <input type="text" class="form-control" formControlName="tezina">
+        <input type="text" class="form-control" formControlName="level">
           <label class="mt-3">
             Trajanje:
           </label>
-          <input type="number" class="form-control"  placeholder="Enter duration"  formControlName="trajanje">
+          <input type="number" class="form-control"  placeholder="upisite trajanje"  formControlName="duration">
           <label class="mt-3">
             Opis:
           </label>
-          <input type="text" class="form-control"  placeholder="Enter duration"  formControlName="description">
+          <input type="text" class="form-control"  placeholder="upisite opis"  formControlName="description">
         <button class="btn btn-primary mt-3" type="submit" >
           Prihvati
         </button> 

@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import { komentar } from '../../models/komentar';
+import { Comment } from '../../models/komentar';
 
 export enum CommentsActionsTypes{
     ADD_COMMENT='[Add Comment]',
@@ -10,12 +10,12 @@ export enum CommentsActionsTypes{
 
 export class AddComment implements Action{
     readonly type=CommentsActionsTypes.ADD_COMMENT;
-    constructor(public mycomment:komentar){}
+    constructor(public mycomment:Comment){}
 }
 
 export class AddCommentSuccess implements Action{
     readonly type=CommentsActionsTypes.ADD_COMMENT_SUCCESS;
-    constructor(public mycomment:komentar){}
+    constructor(public mycomment:Comment){}
 }
 
 export class LoadAllComments implements Action{
@@ -25,7 +25,7 @@ export class LoadAllComments implements Action{
 
 export class LoadAllCommentsSuccess implements Action{
     readonly type=CommentsActionsTypes.LOAD_All_COMMENTS_SUCCESS;
-    constructor(public comments:komentar[]){}
+    constructor(public comments:Comment[]){}
 }
 
 export type CommentsActions 

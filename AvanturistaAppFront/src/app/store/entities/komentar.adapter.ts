@@ -1,20 +1,20 @@
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
 import {createFeatureSelector} from '@ngrx/store';
-import { komentar } from '../../../app/models/komentar'
+import { Comment } from '../../../app/models/komentar'
 
 
-export const commentsAdapter = createEntityAdapter<komentar>({
+export const commentsAdapter = createEntityAdapter<Comment>({
    sortComparer:sortByDate
 });
 
-export interface KomentariState extends EntityState<komentar> {
+export interface CommentState extends EntityState<Comment> {
 };
 
-function sortByDate(e1: komentar, e2: komentar) {
-    return Number(e2.datumObjave) - Number(e1.datumObjave)
+function sortByDate(e1: Comment, e2: Comment) {
+    return Number(e2.publish) - Number(e1.publish)
 }
 
-export const getCommentState= createFeatureSelector<KomentariState>('komentari');
+export const getCommentState= createFeatureSelector<CommentState>('comments');
 
 const {
     selectIds,

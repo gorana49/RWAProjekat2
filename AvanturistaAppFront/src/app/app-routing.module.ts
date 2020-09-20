@@ -34,7 +34,7 @@ const routes: Routes = [
     component:  TuristInfoMainComponent,
     children: [
       {path: '', component: PregledAvanturaComponent},
-      { path: 'detail/:id', component: DetailComponent },
+      {path: 'detail/:id', component: DetailComponent},
       {path: 'poseceno', component: PosecenoComponent},  //ovde se iscrtavaju moje avanture
       {path: 'dodajAvanturu', component: DodajAvanturuComponent}, 
       {path: 'prosecneCene', component: ProsecneCeneComponent} //dodavanje prosecnih cena na toj lokaciji
