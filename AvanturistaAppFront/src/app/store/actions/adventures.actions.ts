@@ -6,6 +6,9 @@ export enum AdventureActionsTypes{
     LOAD_ALL_ADVENTURES ='[Load All Adventures]',
     LOAD_ALL_ADVENTURES_SUCCESS='[Load All Adventures Success]',
 
+    DELETE_ADVENTURE = '[Delete Adventure]',
+    DELETE_ADVENTURE_SUCCESS= '[Delete Adventure Success]',
+    
     UPDATE_ADVENTURE = '[Update Adventure]',
     UPDATE_ADVENTURE_SUCCESS ='[Update Adventure Success]',
 
@@ -22,8 +25,14 @@ export class LoadAllAdventuresSuccess implements Action{
     readonly type=AdventureActionsTypes.LOAD_ALL_ADVENTURES_SUCCESS;
     constructor(public  adventures:Adventure[]){}
 }
-
-
+export class DeleteAdventure implements Action{
+    readonly type=AdventureActionsTypes.DELETE_ADVENTURE;
+    constructor(public id:number){}
+}
+export class DeleteAdventureSuccess implements Action{
+    readonly type=AdventureActionsTypes.DELETE_ADVENTURE_SUCCESS;
+    constructor(public id:number) {};
+}
 export class UpdateAdventure implements Action{
     readonly type=AdventureActionsTypes.UPDATE_ADVENTURE;
     constructor(public updatedAdventure:Adventure){}
@@ -31,10 +40,8 @@ export class UpdateAdventure implements Action{
 
 export class UpdateAdventureSuccess implements Action{
     readonly type=AdventureActionsTypes.UPDATE_ADVENTURE_SUCCESS;
-    constructor(
-        public id:number,
-        public updatedAdventure:Partial<Adventure>
-        ){}
+    constructor(public id:number,
+        public updatedAdventure:Partial<Adventure>){}
 }
 
 
@@ -53,4 +60,6 @@ export type AdventureActions
 | UpdateAdventure
 | UpdateAdventureSuccess
 | AddAdventure
-| AddAdventureSuccess;
+| AddAdventureSuccess
+| DeleteAdventure
+| DeleteAdventureSuccess;

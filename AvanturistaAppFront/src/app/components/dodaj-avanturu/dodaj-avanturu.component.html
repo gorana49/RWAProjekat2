@@ -2,12 +2,12 @@
     <p *ngIf="emptyFields" style="background-color: rgb(245, 96, 96)" class="border border-danger rounded">
       Popuniti prazna polja!
     </p>
-    <h4>Dodajte novu avanturu za vasu lokaciju</h4>
+    <h4>Dodajte novu avanturu za vašu lokaciju</h4>
     <form class= "formaReg" [formGroup]="adventure" (ngSubmit)="onSubmit()">
           <label class="mt-3">
             Naslov:
           </label>
-          <input type="text" class="form-control" placeholder="Enter title"  formControlName="title">
+          <input type="text" class="form-control" placeholder="upisite naslov"  formControlName="title">
         <label class="mt-3">
             Lokacija:
         </label>
@@ -24,7 +24,7 @@
             Opis:
           </label>
           <input type="text" class="form-control"  placeholder="upisite opis"  formControlName="description">
-        <button class="btn btn-primary mt-3" type="submit" >
+        <button class="btnAdd" type="submit" >
           Prihvati
         </button> 
       </form>

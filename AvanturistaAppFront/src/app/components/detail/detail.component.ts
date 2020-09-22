@@ -19,7 +19,6 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   adventure:Adventure;
   isMyAvantura:boolean;
-  alreadyLeftAComment:boolean;
   comments:Observable<Comment[]>;
   user:User;
   destoryer$ = new Subject<void>();
@@ -28,7 +27,6 @@ export class DetailComponent implements OnInit, OnDestroy {
     private route:ActivatedRoute,
     private store:Store<State>) { 
       this.isMyAvantura=false;
-      this.alreadyLeftAComment=false;
     }
 
   ngOnDestroy(): void {

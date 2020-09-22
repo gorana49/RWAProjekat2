@@ -16,9 +16,9 @@ import { LoadUser } from 'src/app/store/actions/user.actions';
 export class PregledAvanturaComponent implements OnInit {
   constructor(private store:Store<AdventureState>,
     private router: Router) {}
-  avanture$:Observable<Adventure[]>;
+  adventures:Observable<Adventure[]>;
   ngOnInit(): void {
-    this.avanture$=this.store.select(selectAllAdventure);
+    this.adventures=this.store.select(selectAllAdventure);
     if(localStorage.getItem("LoggedIn")!=="true"){
       this.router.navigate(['/content'])
     }

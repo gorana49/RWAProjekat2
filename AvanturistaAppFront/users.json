@@ -2,10 +2,8 @@
   "users": [
     {
       "visited": [
-        3,
         2,
-        3,
-        4
+        3
       ],
       "id": 1,
       "username": "gocki",
@@ -14,13 +12,7 @@
       "pib": "02020105067",
       "role": "turistInfo",
       "roleflag": true,
-      "komentari": [
-        4,
-        6,
-        6,
-        7,
-        7
-      ]
+      "komentari": []
     },
     {
       "visited": [
@@ -30,11 +22,14 @@
       "username": "zeljko",
       "password": "zeljko",
       "email": "gocki",
-      "pib": "0202010506",
-      "role": "turistInfo",
-      "roleflag": true,
+      "pib": "",
+      "role": "korisnik",
+      "roleflag": false,
       "komentari": [
-        2
+        1,
+        2,
+        3,
+        3
       ]
     },
     {
@@ -61,30 +56,21 @@
     },
     {
       "id": 2,
-      "title": "test",
-      "location": "teset",
-      "level": "etes",
-      "duration": 31,
+      "title": "dsadasd",
+      "location": "dasdas",
+      "level": "dasdas",
+      "duration": 34,
       "isAvailable": true,
-      "description": "sdf"
+      "description": "dasdsad"
     },
     {
       "id": 3,
-      "title": "asd",
-      "location": "asd",
-      "level": "sd",
-      "duration": 2123,
+      "title": "sdasd",
+      "location": "dasd",
+      "level": "dasd",
+      "duration": 342,
       "isAvailable": true,
-      "description": "awd"
-    },
-    {
-      "id": 4,
-      "title": "frfrkok",
-      "location": "kok",
-      "level": "kok",
-      "duration": 213,
-      "isAvailable": true,
-      "description": "kedo"
+      "description": "dasdas"
     }
   ],
   "comments": [
@@ -104,38 +90,10 @@
     },
     {
       "id": 3,
-      "avanturaId": 1,
-      "datumObjave": "1600537355950",
-      "username": "gocki",
-      "comment": "erweqertwty"
-    },
-    {
-      "id": 4,
-      "adventureId": 3,
-      "publish": "1600613262083",
-      "username": "gocki",
-      "comment": "dsfsd"
-    },
-    {
-      "id": 5,
-      "adventureId": 3,
-      "publish": "1600614746971",
-      "username": "gocki",
-      "comment": "gtvyubjhbuj"
-    },
-    {
-      "id": 6,
-      "adventureId": 3,
-      "publish": "1600619185051",
-      "username": "gocki",
-      "comment": "kok"
-    },
-    {
-      "id": 7,
-      "adventureId": 4,
-      "publish": "1600619646521",
-      "username": "gocki",
-      "comment": "skfosk"
+      "adventureId": 2,
+      "publish": "1600798527632",
+      "username": "zeljko",
+      "comment": "rwefwef"
     }
   ]
 }

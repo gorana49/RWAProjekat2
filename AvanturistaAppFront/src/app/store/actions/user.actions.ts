@@ -3,8 +3,8 @@ import {User} from '../../models/user'
 
 export enum UserActionsTypes{
     USER_LOGOUT='[User Logout]',
-    DODAJ_MOJU_AVANTURU = '[Dodaj Moju Avanturu]',
-    DODAJ_MOJU_AVANTURU_USPESNO = '[Dodaj Moju Avanturu Uspesno]',
+    UPDATE_MY_ADVENTURE = '[Update My Adventure]',
+    UPDATE_MY_ADVENTURE_SUCCESS = '[Update My Adventure Success]',
     DODAJ_KOMENTAR = '[Dodaj Komentar]',
     DODAJ_KOMENTAR_USPESNO = '[Dodaj Komentar Uspesno]',
     
@@ -23,13 +23,13 @@ export class LoadUserSuccess implements Action{
     constructor(public user:User){}
 }
 
-export class DodajMojuAvanturu implements Action{
-    readonly type=UserActionsTypes.DODAJ_MOJU_AVANTURU;
+export class UpdateMyAdventure implements Action{
+    readonly type=UserActionsTypes.UPDATE_MY_ADVENTURE;
     constructor(public user:User){}
 }
 
-export class DodajMojuAvanturuUspesno implements Action{
-    readonly type=UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO;
+export class UpdateMyAdventureSuccess implements Action{
+    readonly type=UserActionsTypes.UPDATE_MY_ADVENTURE_SUCCESS;
     constructor(public user:User){ console.log(user)}
 }
 
@@ -50,9 +50,9 @@ export class UserLogout implements Action{
 
 export type UserActions 
 =   UserLogout
-| DodajMojuAvanturu
+| UpdateMyAdventure
 |DodajKomentar
-|DodajMojuAvanturuUspesno
+|UpdateMyAdventureSuccess
 |LoadUserSuccess
 |LoadUser
 |DodajKomentarUspesno;

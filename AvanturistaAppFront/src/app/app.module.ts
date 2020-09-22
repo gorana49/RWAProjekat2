@@ -32,6 +32,10 @@ import { CommentFormComponent } from '../app/components/comment-form/comment-for
 import { CommentListComponent } from '../app/components/comment-list/comment-list.component';
 import { CommentComponent } from '../app/components/comment/comment.component'
 import { mainReducer } from './store/reducers/main.reducer';
+import {MatCardModule} from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +60,12 @@ import { mainReducer } from './store/reducers/main.reducer';
     CommentComponent
   ],
   imports: [
+    CommonModule,
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
+    MatCardModule,
+    FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -66,7 +73,8 @@ import { mainReducer } from './store/reducers/main.reducer';
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),
-    EffectsModule.forRoot([UserEffects,komentariEffects,AvantureEffects])
+    EffectsModule.forRoot([UserEffects,komentariEffects,AvantureEffects]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

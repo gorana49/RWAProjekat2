@@ -29,6 +29,10 @@ export class AdventureService {
       return this.http.post<Adventure>(adventure_url,adventure)
     }
   }
+  public deleteAdventure(id:number):Observable<any>
+  {
+    return this.http.delete<Adventure>(`${adventure_url}/${id}`, httpOptions);
+  }
   
    public updateAdventure(adventure:Adventure):Observable<any>{
     return this.http.put<Adventure>(`${adventure_url}/${adventure.id}`,adventure,httpOptions)

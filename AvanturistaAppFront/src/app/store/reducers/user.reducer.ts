@@ -1,4 +1,4 @@
-import {UserActions,UserActionsTypes, DodajKomentarUspesno, DodajMojuAvanturuUspesno, LoadUserSuccess, LoadUser} from '../actions/user.actions';
+import {UserActions,UserActionsTypes, DodajKomentarUspesno, UpdateMyAdventureSuccess, LoadUserSuccess, LoadUser, UpdateMyAdventure} from '../actions/user.actions';
 import {AuthState} from '../../models/auth-state'
 import { User } from 'src/app/models/user';
 
@@ -17,10 +17,9 @@ export function userReducer(state:AuthState=initialState,action:UserActions): an
         case UserActionsTypes.USER_LOGOUT:{
             return null;
         }
-        case UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO:{
-            const {user} = action as DodajMojuAvanturuUspesno;
+        case UserActionsTypes.UPDATE_MY_ADVENTURE_SUCCESS:{
+            const {user} = action as UpdateMyAdventureSuccess;
             let st = new AuthState(true, user);
-            console.log('test', st, action);
             return st;
         }
         case UserActionsTypes.DODAJ_KOMENTAR_USPESNO:{

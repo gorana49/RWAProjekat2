@@ -4,13 +4,13 @@ import {AdventureService} from '../../services/avantura.service';
 import {map,mergeMap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import {AdventureActionsTypes,AddAdventure, UpdateAdventure} from '../actions/adventures.actions'
+import {AdventureActionsTypes,AddAdventure, UpdateAdventure, DeleteAdventure} from '../actions/adventures.actions'
 
 @Injectable()
 export class AvantureEffects{
 
     constructor(private actions$:Actions,private adventureService:AdventureService){}
-    
+
     getAdventures=createEffect(()=>
         this.actions$.pipe(
             ofType(AdventureActionsTypes.LOAD_ALL_ADVENTURES),
@@ -56,5 +56,16 @@ export class AvantureEffects{
         )
         )
     )
+
+    deleteAdventure=createEffect(()=>
+    this.actions$.pipe(
+        ofType<DeleteAdventure>(AdventureActionsTypes.DELETE_ADVENTURE),
+        map((action)=> action.id),
+        mergeMap((advId)=>this.adventureService.deleteAdventure(advId)
+        .pipe(
+            map((avantura) =>
+                ({type:AdventureActionsTypes.DELETE_ADVENTURE_SUCCESS,
+                id:avantura.id})
+            )))));
 
 }

@@ -1,18 +1,16 @@
-<div class="card m-1" style="width: 18rem;">
-    <!-- <img src= {{avantura.imageUrl}} class="card-img-top" alt="..." style="width: 18rem;height:230px"> -->
-    <div class="card-body">
-      <h5 class="card-title">{{adventure.title}}</h5>
-      <p class="card-text" >
-        Tezina ove avanture je: {{adventure.level}}
-      </p>
-      <p class="card-text" >
+  <mat-card class="card">
+    <mat-card-title>{{adventure.title}}</mat-card-title>
+    <mat-card-subtitle>Nivo: {{adventure.level}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>
         Trajanje {{adventure.duration}}
       </p>
-      <ng-template >
-        <p class="card-text">
-          Opis: {{adventure.description}} 
-        </p>
-      </ng-template>
-      <a routerLink="/turistInfo/detail/{{adventure.id}}" class="btn btn-primary">Detaljnije</a>
-    </div>
-  </div>
+      <p>
+        Opis: {{adventure.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="submit" (click)="navigateToAdventureDetail()">Detaljnije</button>
+      <button mat-button type="submit" (click)="deleteAdventure()">Obriši</button>
+    </mat-card-actions>
+  </mat-card> 

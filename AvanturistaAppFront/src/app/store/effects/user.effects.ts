@@ -3,7 +3,7 @@ import {Effect,Actions, ofType, createEffect} from '@ngrx/effects';
 import {switchMap, tap} from 'rxjs/operators';
 import {map,mergeMap} from 'rxjs/operators';
 import {UserService} from '../../services/user.service'
-import {UserActionsTypes, DodajKomentar, DodajMojuAvanturu, LoadUser} from '../actions/user.actions'
+import {UserActionsTypes, DodajKomentar, UpdateMyAdventure, LoadUser, UpdateMyAdventureSuccess} from '../actions/user.actions'
 
 
 @Injectable()
@@ -23,12 +23,12 @@ export class UserEffects{
     
     addToMyAdventures=createEffect(()=>
     this.actions$.pipe(
-        ofType<DodajMojuAvanturu>(UserActionsTypes.DODAJ_MOJU_AVANTURU),
+        ofType<UpdateMyAdventure>(UserActionsTypes.UPDATE_MY_ADVENTURE),
         map((action)=>action.user),
         mergeMap(user=> this.userService.updateUser(user).pipe(
             map(user => {
                 return { 
-                    type:UserActionsTypes.DODAJ_MOJU_AVANTURU_USPESNO,
+                    type:UserActionsTypes.UPDATE_MY_ADVENTURE_SUCCESS,
                     user:user
                 };
             })))))

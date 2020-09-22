@@ -3,10 +3,7 @@
         <ul class="list-unstyled components">
             <p>MENI</p>
             <li>
-                <a routerLink="/korisnik">Pregled okruga</a>
-            </li>
-            <li>
-                <a routerLink="/korisnik/kalkulator">Kalkulator</a>
+                <a routerLink="/korisnik">Home</a>
             </li>
             <li>
                 <a routerLink="/korisnik/poseceno">Posecene lokacije</a>
@@ -26,6 +23,7 @@
                 <div class="user">
                      Korisnik
                 </div>
+                <button class="logoutBtn" (click)="logout()">Logout </button>
              </div>       
         </nav>
         <div class="line"></div>

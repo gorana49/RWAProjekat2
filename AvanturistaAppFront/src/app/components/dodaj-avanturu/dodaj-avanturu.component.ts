@@ -7,8 +7,8 @@ import { Store} from '@ngrx/store';
 import { Router } from '@angular/router';
 import { State } from 'src/app/store/reducers/main.reducer';
 import { IUser, User } from 'src/app/models/user';
-import { DodajMojuAvanturu, DodajMojuAvanturuUspesno } from 'src/app/store/actions/user.actions';
-import {AddAdventure, AddAdventureSuccess} from '../../store/actions/adventures.actions'
+import { UpdateMyAdventure, UpdateMyAdventureSuccess } from 'src/app/store/actions/user.actions';
+import {AddAdventure, AddAdventureSuccess, UpdateAdventure} from '../../store/actions/adventures.actions'
 import { of } from 'rxjs';
 @Component({
   selector: 'app-dodaj-avanturu',
@@ -60,7 +60,7 @@ export class DodajAvanturuComponent implements OnInit {
           this.user.visited = [...this.user.visited, this.numberOfEntities+1];
           this.store.dispatch(new AddAdventure(this.newAvantura));
           //SRPSKI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          this.store.dispatch(new DodajMojuAvanturu(this.user));
+          this.store.dispatch(new UpdateMyAdventure(this.user));
           this.router.navigate(['/turistInfo']);
           }
        // }
