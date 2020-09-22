@@ -3,7 +3,7 @@ export interface Comment{
     adventureId:number;
     publish:string;
     username:string;
-    content:string;
+    comment:string;
 }
 export class Comment implements Comment
 {
@@ -11,7 +11,7 @@ export class Comment implements Comment
     adventureId:number;
     publish:string;
     username:string;
-    content:string;
+    comment:string;
     constructor(values: Comment = null) {
         if(values != null)
         {

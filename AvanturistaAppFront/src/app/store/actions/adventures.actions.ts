@@ -20,7 +20,7 @@ export class LoadAllAdventures implements Action{
 
 export class LoadAllAdventuresSuccess implements Action{
     readonly type=AdventureActionsTypes.LOAD_ALL_ADVENTURES_SUCCESS;
-    constructor(public  adventure:Adventure[]){}
+    constructor(public  adventures:Adventure[]){}
 }
 
 

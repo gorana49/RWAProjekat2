@@ -13,7 +13,8 @@ export function avanturaReducer(state:AdventureState=initialState,action:Adventu
             return adventureAdapter.addOne(action.adventure, state)
         }
         case AdventureActionsTypes.LOAD_ALL_ADVENTURES_SUCCESS:{
-            return adventureAdapter.setAll(action.adventure,state)
+            console.log(action);
+            return adventureAdapter.setAll(action.adventures,state)
         }
          case AdventureActionsTypes.UPDATE_ADVENTURE_SUCCESS:{
              return adventureAdapter.updateOne({

@@ -24,10 +24,10 @@ export class DodajAvanturuComponent implements OnInit {
   adventure:FormGroup;
   constructor( private store:Store<State>,private router: Router, private fb: FormBuilder) { 
     this.adventure = this.fb.group({
-      naslov: ['', Validators.required],
-      lokacija: '',
-      tezina: '',
-      trajanje: '',
+      title: ['', Validators.required],
+      location: '',
+      level: '',
+      duration: '',
       description: ''
     });
   }

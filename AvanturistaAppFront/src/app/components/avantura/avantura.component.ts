@@ -12,6 +12,7 @@ export class AvanturaComponent implements OnInit {
   adventure:Adventure;
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 }

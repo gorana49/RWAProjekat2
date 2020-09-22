@@ -26,7 +26,7 @@ export class CommentFormComponent implements OnInit {
   user:User;
 
   userComment=new FormGroup({
-    comment:new FormControl(''),
+    comment:new FormControl('')
   })
 
   constructor(private store:Store<State>) { 
@@ -46,10 +46,11 @@ export class CommentFormComponent implements OnInit {
         id:this.numberOfEntities+1,
         adventureId:this.adventure.id,
         publish:new Date().getTime().toString(),
-        username:this.user[0].username,
-        content:this.userComment.value.content,
+        username:this.user.username,
+        comment:this.userComment.value.comment,
       }
-      this.user.komentari = [...this.user[0].komentari, this.numberOfEntities+1];
+      this.user.komentari = [...this.user.komentari, this.numberOfEntities+1];
+
       this.store.dispatch(new UpdateAdventure(this.adventure))
       this.store.dispatch(new AddComment(this.myComment))
 

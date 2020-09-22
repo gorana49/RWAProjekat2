@@ -11,7 +11,7 @@ export interface AdventureState {
 };
 
 function sortById(e1: Adventure, e2: Adventure) {
-    return e2.id - e1.id
+    return e2.id - e1.id;
 }
 
 export const getAdventureState= createFeatureSelector<AdventureState>('adventures');
