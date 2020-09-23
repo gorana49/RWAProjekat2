@@ -4,7 +4,6 @@ import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import {urlAdresa} from '../constants/url'
-import {AuthKorisnikResponse} from "../models/auth-korisnik-response"
 import { IUser, User } from '../models/user';
 import { map } from 'rxjs/operators';
 
@@ -35,6 +34,8 @@ export class UserService {
         return this.http.post<User>(`${users_url}`,user);
     }
 
+    public GetUsers():Observable<User[]>{ return this.http.get<User[]>(`${users_url}`)};
+  
     public updateUser(user:User):Observable<User>{
         if(user)
         {

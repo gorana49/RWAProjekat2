@@ -26,8 +26,10 @@ export function avanturaReducer(state:AdventureState=initialState,action:Adventu
             return adventureAdapter.removeOne(action.id
                 ,state)
         }
-      
+
+        case AdventureActionsTypes.DELETE_ALL_ADVENTURES:
+         {return adventureAdapter.removeAll(state);}
         default:
-            return state;
+          return state;
     }
 }

@@ -25,7 +25,6 @@ export function userReducer(state:AuthState=initialState,action:UserActions): an
         case UserActionsTypes.DODAJ_KOMENTAR_USPESNO:{
            
             let user = action as DodajKomentarUspesno;
-            console.log(user);
             let st = new AuthState(true, user.user);
             return st;
         }

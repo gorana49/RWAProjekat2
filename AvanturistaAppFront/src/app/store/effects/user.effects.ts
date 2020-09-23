@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import {Effect,Actions, ofType, createEffect} from '@ngrx/effects';
 import {switchMap, tap} from 'rxjs/operators';
 import {map,mergeMap} from 'rxjs/operators';
 import {UserService} from '../../services/user.service'
-import {UserActionsTypes, DodajKomentar, UpdateMyAdventure, LoadUser, UpdateMyAdventureSuccess} from '../actions/user.actions'
+import { DeleteAllAdventures } from '../actions/adventures.actions';
+import { DeleteAllComments } from '../actions/komentar.actions';
+import {UserActionsTypes, DodajKomentar, UpdateMyAdventure, LoadUser, UpdateMyAdventureSuccess, UserLogout} from '../actions/user.actions'
 
 
 @Injectable()
@@ -47,5 +50,16 @@ export class UserEffects{
         )
         )
     )
-    constructor(private actions$:Actions,private userService:UserService){ }
+
+    logout$ = createEffect(() => this.actions$.pipe(
+        ofType<UserLogout>(UserActionsTypes.USER_LOGOUT),
+        switchMap(()=> [
+          new DeleteAllAdventures(),
+          new DeleteAllComments()
+        ]),
+        tap(() => {
+          this.router.navigateByUrl('/content');
+        }))
+      );
+    constructor(private actions$:Actions,private userService:UserService, private router:Router){ }
 }

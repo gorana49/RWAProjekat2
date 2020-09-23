@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { filter } from 'rxjs/operators';
 import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
 import { DeleteAdventure, UpdateAdventure } from 'src/app/store/actions/adventures.actions';
@@ -22,13 +23,15 @@ export class AvanturaComponent implements OnInit {
   constructor(private store:Store<State>,private router: Router) { }
 
   ngOnInit(): void {
-    this.store.select(selectTotalAdventures)
-    .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
-      this.store.select(state=>state.auth.user).subscribe(user=>{
-        if(user)
-        {
+    this.store.select(selectTotalAdventures).pipe(
+    filter(val => val !== undefined && val !==null),)
+     .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
+      this.store.select(state=>state.auth.user).pipe(
+        filter(val => val !== undefined && val !==null),).subscribe(user=>{
+        //if(user)
+        //{
          this.user = new User(user);
-        }
+        //}
       })
   }
   deleteAdventure()

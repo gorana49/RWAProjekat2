@@ -5,7 +5,8 @@ export enum CommentsActionsTypes{
     ADD_COMMENT='[Add Comment]',
     ADD_COMMENT_SUCCESS='[Add Comment Success]',
     LOAD_All_COMMENTS='[Load All Comments]',
-    LOAD_All_COMMENTS_SUCCESS='[Load All Comments Success]'
+    LOAD_All_COMMENTS_SUCCESS='[Load All Comments Success]',
+    DELETE_ALL_COMMENTS='[Delete All Comments]'
 }
 
 export class AddComment implements Action{
@@ -27,9 +28,13 @@ export class LoadAllCommentsSuccess implements Action{
     readonly type=CommentsActionsTypes.LOAD_All_COMMENTS_SUCCESS;
     constructor(public comments:Comment[]){}
 }
-
+export class DeleteAllComments implements Action {
+    readonly type = CommentsActionsTypes.DELETE_ALL_COMMENTS;
+    constructor(){}
+  }
 export type CommentsActions 
 = AddComment
 | AddCommentSuccess
 | LoadAllComments
 | LoadAllCommentsSuccess
+| DeleteAllComments

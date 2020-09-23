@@ -15,6 +15,8 @@ export function komentarReducer(state:CommentState=initialState,action:CommentsA
         case CommentsActionsTypes.LOAD_All_COMMENTS_SUCCESS:{
             return commentsAdapter.addAll(action.comments, state)
         }
+        case CommentsActionsTypes.DELETE_ALL_COMMENTS:
+        return commentsAdapter.removeAll(state);
         default:
             return state;
     }

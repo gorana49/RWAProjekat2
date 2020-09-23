@@ -11,11 +11,11 @@ import { LoadAllComments } from './store/actions/komentar.actions';
 })
 export class AppComponent {
   title = 'AvanturistaAppFront';
-  constructor(private store:Store<State>) {
+  constructor() {
   }
 
  ngOnInit(){
-     this.store.dispatch(new LoadAllAdventures());
-     this.store.dispatch(new LoadAllComments());
+    //  this.store.dispatch(new LoadAllAdventures());
+    //  this.store.dispatch(new LoadAllComments());
  }
 }

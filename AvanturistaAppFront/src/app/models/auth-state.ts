@@ -1,4 +1,3 @@
-import { AuthKorisnikResponse } from './auth-korisnik-response';
 import { User } from './user';
 export interface AuthState{
     loggedIn:boolean;

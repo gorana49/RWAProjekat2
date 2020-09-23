@@ -7,6 +7,7 @@ import { Dictionary } from '@ngrx/entity';
 import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
 import { LoadUser } from 'src/app/store/actions/user.actions';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pregled-avantura',
@@ -18,7 +19,7 @@ export class PregledAvanturaComponent implements OnInit {
     private router: Router) {}
   adventures:Observable<Adventure[]>;
   ngOnInit(): void {
-    this.adventures=this.store.select(selectAllAdventure);
+    this.adventures=this.store.select(selectAllAdventure).pipe(filter(val => val !== undefined && val !==null),);
     if(localStorage.getItem("LoggedIn")!=="true"){
       this.router.navigate(['/content'])
     }

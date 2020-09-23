@@ -1,1 +1,21 @@
-<p>ostali-poseceno works!</p>
+  <div *ngFor="let user of userAdventures">
+    <mat-card-header>
+        <mat-card-title> {{user.Username}}</mat-card-title>
+    </mat-card-header>
+    <div *ngFor="let adventure of user.Adventures">
+        <mat-card class="card">
+            <mat-card-title>{{adventure.title}}</mat-card-title>
+            <mat-card-subtitle>Nivo: {{adventure.level}}</mat-card-subtitle>
+            <mat-card-content>
+              <p>
+                Trajanje {{adventure.duration}}
+              </p>
+              <p>
+                Opis: {{adventure.description}}
+              </p>
+            </mat-card-content>
+        </mat-card> 
+    </div>
+   </div>
+
+

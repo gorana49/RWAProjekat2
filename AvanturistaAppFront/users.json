@@ -29,7 +29,9 @@
         1,
         2,
         3,
-        3
+        3,
+        4,
+        4
       ]
     },
     {
@@ -94,6 +96,13 @@
       "publish": "1600798527632",
       "username": "zeljko",
       "comment": "rwefwef"
+    },
+    {
+      "id": 4,
+      "adventureId": 1,
+      "publish": "1600884243945",
+      "username": "zeljko",
+      "comment": "sdfsdfsdf"
     }
   ]
 }

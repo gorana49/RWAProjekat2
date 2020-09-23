@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
-import { map, takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
 import { selectAllAdventure } from 'src/app/store/entities/avantura.adapter';
@@ -26,6 +26,7 @@ export class ProsecneCeneComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
 
     this.store.select(store=> store.auth.user).pipe(
+        filter(val => val !== undefined && val !==null),
         takeUntil(this.destoryer$)).subscribe(user=> 
        {
         this.user =user;
