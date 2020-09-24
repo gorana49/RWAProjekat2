@@ -1,5 +1,5 @@
 <div class="visitedContainer">
-    <button type="submit" (click)="addVisitedAdventure()">Dodaj posećenu avanturu</button>
+    <button mat-button type="submit" (click)="addVisitedAdventure()">Dodaj posećenu avanturu</button>
     <div *ngIf = "isClickedAddAdventure">
         <input type="text" class="search form-control" placeholder="Pretrazite avanture po lokaciji, težini ili trajanju"
         [(ngModel)]='inputFilter'/>
@@ -18,7 +18,7 @@
                   </p>
                 </mat-card-content>
                 <mat-card-actions>
-                  <button mat-button type="submit" (click)="addInVisited()">Dodaj</button>
+                  <button mat-button class="btnAddinVisited" type="submit" (click)="addInVisited(adventure)">Dodaj</button>
                 </mat-card-actions>
             </mat-card> 
            </div>

@@ -1,7 +1,9 @@
+import { OnDestroy } from '@angular/core';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
 import { DeleteAdventure, UpdateAdventure } from 'src/app/store/actions/adventures.actions';
@@ -15,23 +17,23 @@ import { State } from 'src/app/store/reducers/main.reducer';
   templateUrl: './avantura.component.html',
   styleUrls: ['./avantura.component.css']
 })
-export class AvanturaComponent implements OnInit {
+export class AvanturaComponent implements OnInit, OnDestroy {
   numberOfEntities:number;
   user:User;
+  destoryer$ = new Subject<void>();
   @Input()
   adventure:Adventure;
   constructor(private store:Store<State>,private router: Router) { }
-
+  ngOnDestroy(): void {
+    this.destoryer$.next(null);
+  }
   ngOnInit(): void {
     this.store.select(selectTotalAdventures).pipe(
-    filter(val => val !== undefined && val !==null),)
+    filter(val => val !== undefined && val !==null), takeUntil(this.destoryer$))
      .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
-      this.store.select(state=>state.auth.user).pipe(
+      this.store.select(state=>state.auth).pipe(
         filter(val => val !== undefined && val !==null),).subscribe(user=>{
-        //if(user)
-        //{
-         this.user = new User(user);
-        //}
+         this.user = new User(user.user);
       })
   }
   deleteAdventure()

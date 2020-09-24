@@ -8,7 +8,7 @@
             Vaš komentar:
           </label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="comment"></textarea>
-        <button class="btn btn-primary mt-3" type="submit" [disabled]="!userComment.valid">
+        <button mat-button class="leaveAComment" type="submit" [disabled]="!userComment.valid">
           Ostavi komentar
         </button> 
     </form>

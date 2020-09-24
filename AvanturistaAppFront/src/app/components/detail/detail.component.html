@@ -1,12 +1,9 @@
-<div class="container fluid px-5 py-2 text-center " *ngIf="adventure">
+<div class="containerDesc " *ngIf="adventure">
     <h1>Avantura: {{adventure.title}}</h1>
     <p><small>Nalazi se na lokaciji: {{adventure.location}}</small></p>
-    <div class="row justify-content-center mt-5">
+    <div class="contDescAdv">
       <div class="card mb-3 " style="max-width: 540px;">
         <div class="row no-gutters">
-          <!-- <div class="col-md-4">
-            <img src="{{avantura.imageUrl}}" class="card-img" alt="...">
-          </div> -->
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">Opis:</h5>
@@ -25,11 +22,11 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="containerComments">
       <app-comment-form [adventure]="adventure"></app-comment-form>
     </div>
     <div class="dropdown-divider"></div>
-    <div class="container">
+    <div class="containerCommUser">
       <h5>-Komentari korisnika-</h5>
       <app-comment-list [comments]="comments"></app-comment-list>
     </div>

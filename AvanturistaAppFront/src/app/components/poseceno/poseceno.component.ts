@@ -5,7 +5,8 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
 import { AdventureService } from 'src/app/services/avantura.service';
-import { selectAllAdventure } from 'src/app/store/entities/avantura.adapter';
+import { UpdateMyAdventure } from 'src/app/store/actions/user.actions';
+import { selectAllAdventure, selectTotalAdventures } from 'src/app/store/entities/avantura.adapter';
 import { State } from 'src/app/store/reducers/main.reducer';
 
 @Component({
@@ -16,6 +17,7 @@ import { State } from 'src/app/store/reducers/main.reducer';
 export class PosecenoComponent implements OnInit,OnDestroy {
   isClickedAddAdventure:boolean;
   user:User;
+  numberOfEntities:number;
   advInit:Adventure;
   adventures:Observable<Adventure[]>;
   possibleAdventures:Adventure[]=[];
@@ -42,7 +44,10 @@ export class PosecenoComponent implements OnInit,OnDestroy {
       filter(val => val !== undefined && val !==null),
       takeUntil(this.destoryer$)).subscribe(user=> 
      {
-      this.user =user;
+      this.store.select(selectTotalAdventures).pipe(
+        filter(val => val !== undefined && val !==null),)
+         .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
+      this.user = new User(user);
       this.adventures = this.store.select(selectAllAdventure);
       this.adventuresForThisUser(this.adventures);
       this.adventures.subscribe(adventure=>{
@@ -64,11 +69,16 @@ export class PosecenoComponent implements OnInit,OnDestroy {
   {
     filterBy = filterBy.toLocaleLowerCase();
     return this.possibleAdventures.filter((adventure:Adventure)=>
-     // adventure.duration.toLocaleLowerCase().indexOf(filterBy)!==-1 || 
       adventure.location.toLocaleLowerCase().indexOf(filterBy)!== -1)
   }
-  addInVisited()
+  addInVisited(adventure:Adventure)
   {
+    if(this.user)
+    {
 
+     this.user.visited = [...this.user.visited, this.numberOfEntities];
+     this.user.visited.push(adventure.id);
+     this.store.dispatch(new UpdateMyAdventure(this.user));
+    }
   }
 }

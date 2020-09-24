@@ -25,11 +25,11 @@ export class ProsecneCeneComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
 
-    this.store.select(store=> store.auth.user).pipe(
+    this.store.select(store=> store.auth).pipe(
         filter(val => val !== undefined && val !==null),
         takeUntil(this.destoryer$)).subscribe(user=> 
        {
-        this.user =user;
+        this.user = new User(user.user);
         this.adventures = this.store.select(selectAllAdventure);
         this.adventuresForThisUser(this.adventures);
        });

@@ -49,7 +49,6 @@ export class DetailComponent implements OnInit, OnDestroy {
         takeUntil(this.destoryer$)
         ).subscribe(user=> { 
         this.user=user;
-        
         this.comments=this.store.select(selectAllComments);
         this.commentsForThisAvantura(this.comments, this.adventure.id);
       });

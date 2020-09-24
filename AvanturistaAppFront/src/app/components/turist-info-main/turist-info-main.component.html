@@ -1,7 +1,6 @@
 <div class="korisnik wrapper">
     <nav id="sidebar">
         <ul class="list-unstyled components">
-            <p>MENI</p>
             <li>
                 <a routerLink ="/turistInfo">Home</a>
             </li>
@@ -15,14 +14,11 @@
     </nav>
     <div class="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button type="button" id="sidebarCollapse" class="btn btn-info dugmence" (click)="collapseMenu();">
+            <button mat-button type="button" id="sidebarCollapse" class="btn btn-info dugmence" (click)="collapseMenu();">
                 <i class="fa fa-align-justify"></i> <span>MENI</span>
             </button>   
             <div class="heder">
-                <div class="user">
-                     Turist Info
-                </div>
-                <button class="logoutBtn" (click)="logout()">Logout </button>
+                <button mat-button type="submit" class="logoutBtn" (click)="logout()">ODJAVA </button>
              </div>       
         </nav>
         <div class="line"></div>

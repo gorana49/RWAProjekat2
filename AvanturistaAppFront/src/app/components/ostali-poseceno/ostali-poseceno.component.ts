@@ -30,9 +30,9 @@ export class OstaliPosecenoComponent implements OnInit {
     this.userService.GetUsers().pipe(
       filter(val => val !== undefined && val !==null),).subscribe(users=>{
       this.users = users;
-      this.store.select(store=> store.auth.user).pipe(
+      this.store.select(store=> store.auth).pipe(
         filter(val => val !== undefined && val !==null)).subscribe(user=> {
-          let index = this.users.indexOf(user);
+          let index = this.users.indexOf(user.user);
           this.users.splice(index-1);
           console.log(this.users);
           this.store.select(selectAllAdventure).pipe(
