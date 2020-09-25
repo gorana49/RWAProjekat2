@@ -19,7 +19,9 @@ export class PregledAvanturaComponent implements OnInit {
     private router: Router) {}
   adventures:Observable<Adventure[]>;
   ngOnInit(): void {
-    this.adventures=this.store.select(selectAllAdventure).pipe(filter(val => val !== undefined && val !==null),);
+    this.adventures = this.store.select(selectAllAdventure).pipe(filter(val => val !== undefined && val !==null),)//.subscribe(
+   //
+    //);
     if(localStorage.getItem("LoggedIn")!=="true"){
       this.router.navigate(['/content'])
     }

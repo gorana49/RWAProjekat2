@@ -12,8 +12,8 @@
               <label class ="reg-labela">
                   Ukoliko ste radnik TuristInfo centra, unesite PIB posle cekiranja.
               </label>
-              <input type="checkbox" [checked]="writePIB"(change)="writePIB = !writePIB"/>
-              <div *ngIf = "writePIB">
+              <input type="checkbox" formControlName="writePIB"/>
+              <div *ngIf = "registerUserForm.value.writePIB">
               <label class="reg-labela">
                   PIB preduzeca:
               </label>
@@ -31,6 +31,9 @@
                   Password:
                 </label>
                 <input type="password" class="form-control"  placeholder="Enter password"  formControlName="password">
+                <div *ngIf="!registerUserForm.valid" class="reg-labela">
+                  <span>Form is not valid</span>
+                </div>
               <button class="reg-button" type="submit">
                 Prihvati
               </button> 

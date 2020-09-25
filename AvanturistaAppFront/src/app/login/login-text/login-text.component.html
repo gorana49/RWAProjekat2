@@ -8,14 +8,17 @@
         </div>
         <label class="log-labela">Prijavljivanje</label>
         <form class= "formaReg" [formGroup]= "loggingUserForm" (ngSubmit)="onSubmit()">
-            <label class="mt-3">
+            <label class="mt-3 white-font">
              Korisničko ime
             </label>
             <input type="text" class="log-input" placeholder="username"  formControlName="username">
-          <label class="mt-3">
+          <label class="mt-3 white-font">
             Šifra
           </label>
           <input type="text" class="log-input" placeholder="password" formControlName="password">
+          <div  *ngIf="error || !loggingUserForm.valid" class="white-font">
+            <span>Bad creadentials</span>
+          </div>
           <button class="log-loginBtn" type="submit" >
             Prijava
           </button> 

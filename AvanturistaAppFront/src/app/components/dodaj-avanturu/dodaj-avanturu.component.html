@@ -1,7 +1,4 @@
 <div class="container fluid px-5 py-2 text-center" style="width: 500px">
-    <p *ngIf="emptyFields" style="background-color: rgb(245, 96, 96)" class="border border-danger rounded">
-      Popuniti prazna polja!
-    </p>
     <h4>Dodajte novu avanturu za vašu lokaciju</h4>
     <form class= "formaReg" [formGroup]="adventure" (ngSubmit)="onSubmit()">
           <label class="mt-3">

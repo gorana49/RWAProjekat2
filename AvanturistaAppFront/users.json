@@ -2,129 +2,78 @@
   "users": [
     {
       "visited": [
+        1,
         2,
-        3,
         4
       ],
       "id": 1,
       "username": "gocki",
+      "email": "gorana@elfak.rs",
       "password": "gocki",
-      "email": "gocki",
-      "pib": "02020105067",
       "role": "turistInfo",
       "roleflag": true,
-      "komentari": [
-        5,
-        5
-      ]
-    },
-    {
-      "visited": [
-        1,4
-      ],
-      "id": 2,
-      "username": "zeljko",
-      "password": "zeljko",
-      "email": "gocki",
-      "pib": "",
-      "role": "korisnik",
-      "roleflag": false,
-      "komentari": [
-        1,
-        2,
-        3,
-        3,
-        4,
-        4
-      ]
-    },
-    {
-      "id": 3,
-      "username": "Milica Mladenov",
-      "email": "milicamladenov@gmail.com",
-      "password": "milicamladenov",
-      "role": "turistInfo",
-      "roleflag": true,
-      "pib": "Nova Varoš",
-      "visited": [],
+      "pib": "Leskovac",
       "komentari": []
     },
     {
-      "id": 4,
-      "username": "andjela",
-      "email": "andjela@gmail.com",
-      "password": "andjela",
+      "visited": [
+        3,
+        1,
+        3,
+        1
+      ],
+      "id": 2,
+      "username": "testtest",
+      "email": "testtest@elfak.rs",
+      "password": "testtest",
       "role": "korisnik",
       "roleflag": false,
       "pib": "",
-      "visited": [],
+      "komentari": []
+    },
+    {
+      "visited": [
+        3,
+        1
+      ],
+      "id": 3,
+      "username": "zokili",
+      "email": "zokili@elfak.rs",
+      "password": "zokili",
+      "role": "korisnik",
+      "roleflag": true,
+      "pib": "",
       "komentari": []
     }
   ],
   "adventures": [
     {
       "id": 1,
-      "title": "Obilazak Markovog kamena",
+      "title": "Markov kamen",
       "location": "Kopaonik",
-      "level": "srednje tesko",
-      "duration": "160 min",
+      "level": "srednja",
+      "duration": 90,
       "isAvailable": true,
-      "description": "Najlepsi vidikovac na Kopaoniku, nedaleko od centra."
+      "description": "AHBdfsdfsdfbdsifgysfdfbsdfgwyefhsdb sfsdhfbfgb sdfgsahdgasbgfasd bffbghasd fsag abgsd fbsdgfb"
     },
     {
       "id": 2,
-      "title": "dsadasd",
-      "location": "dasdas",
-      "level": "dasdas",
-      "duration": 34,
+      "title": "Gostilje",
+      "location": "Zlatibor",
+      "level": "srednje",
+      "duration": 25,
       "isAvailable": true,
-      "description": "dasdsad"
+      "description": "kjdfnsdfbdshf"
     },
     {
       "id": 4,
-      "title": "Dvorci",
-      "location": "Valjevo",
-      "level": "hkdbfsdhb",
+      "title": "cvxcvxc",
+      "location": "cvxcv",
+      "level": "vcxcvxc",
       "duration": 34,
       "isAvailable": true,
-      "description": "fsdfdsfsd"
+      "description": "dfsdf"
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "avanturaId": 1,
-      "datumObjave": "15042008",
-      "username": "zeljko",
-      "comment": "This is a Complete course on angular. perfect examples and assignments. Great job Milos and team !!"
-    },
-    {
-      "id": 2,
-      "avanturaId": 6,
-      "datumObjave": "1600273386986",
-      "username": "zeljko",
-      "comment": "sdsadfaws"
-    },
-    {
-      "id": 3,
-      "adventureId": 2,
-      "publish": "1600798527632",
-      "username": "zeljko",
-      "comment": "rwefwef"
-    },
-    {
-      "id": 4,
-      "adventureId": 1,
-      "publish": "1600884243945",
-      "username": "zeljko",
-      "comment": "sdfsdfsdf"
-    },
-    {
-      "id": 5,
-      "adventureId": 1,
-      "publish": "1600901175716",
-      "username": "gocki",
-      "comment": "dfsdfsd"
-    }
-  ]
+  "comments": []
 }

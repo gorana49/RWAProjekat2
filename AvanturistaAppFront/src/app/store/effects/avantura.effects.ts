@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Effect,Actions, ofType, createEffect} from '@ngrx/effects';
 import {AdventureService} from '../../services/avantura.service';
-import {map,mergeMap} from 'rxjs/operators';
+import {map,mergeMap, switchMap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import {AdventureActionsTypes,AddAdventure, UpdateAdventure, DeleteAdventure} from '../actions/adventures.actions'
@@ -61,11 +61,15 @@ export class AvantureEffects{
     this.actions$.pipe(
         ofType<DeleteAdventure>(AdventureActionsTypes.DELETE_ADVENTURE),
         map((action)=> action.id),
-        mergeMap((advId)=>this.adventureService.deleteAdventure(advId)
+        switchMap((advId)=>this.adventureService.deleteAdventure(advId)
         .pipe(
-            map((avantura) =>
-                ({type:AdventureActionsTypes.DELETE_ADVENTURE_SUCCESS,
-                id:avantura.id})
+            map((avantura) => {
+                console.log('id', avantura);
+                return ({
+                    type:AdventureActionsTypes.DELETE_ADVENTURE_SUCCESS,
+                    id:avantura.id
+                })
+            }
             )))));
 
 }

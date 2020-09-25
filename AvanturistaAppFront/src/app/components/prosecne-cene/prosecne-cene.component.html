@@ -1,7 +1,7 @@
 <div class="myAdventuresContainer">
     <h5>Moje Avanture</h5>
     <div class="myAdvCont" > 
-        <app-avantura *ngFor="let p of adventures | async" [adventure]="p">
+        <app-avantura *ngFor="let p of adventures | async" [adventure]="p" [canBeDeleted]="true">
        </app-avantura>
     </div>
 </div>

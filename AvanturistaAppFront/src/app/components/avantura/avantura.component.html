@@ -11,6 +11,6 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button type="submit" (click)="navigateToAdventureDetail()">Detaljnije</button>
-      <button mat-button type="submit" (click)="deleteAdventure()">Obriši</button>
+      <button *ngIf="canBeDeleted" mat-button type="submit" (click)="deleteAdventure()">Obriši</button>
     </mat-card-actions>
   </mat-card> 

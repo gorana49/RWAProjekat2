@@ -34,7 +34,15 @@ export class UserService {
         return this.http.post<User>(`${users_url}`,user);
     }
 
-    public GetUsers():Observable<User[]>{ return this.http.get<User[]>(`${users_url}`)};
+    public getUsers(): Observable<User[]> { 
+      return this.http.get<User[]>(`${users_url}`, httpOptions )
+      .pipe(
+      map(users=>
+        {
+          console.log(typeof users, ...users); 
+          return [...users];
+        })
+    )};
   
     public updateUser(user:User):Observable<User>{
         if(user)

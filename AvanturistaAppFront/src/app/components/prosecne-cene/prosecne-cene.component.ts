@@ -37,7 +37,7 @@ export class ProsecneCeneComponent implements OnInit,OnDestroy {
 
   adventuresForThisUser(adventures:Observable<Adventure[]>){
     this.adventures = adventures.pipe(
-      map(adventures=> adventures.filter(adventure => this.user.visited.includes(adventure.id) ===true)),
+      map(adventures=> adventures.filter(adventure => this.user.visited.includes(adventure.id) === true)),
     );
   }
 }

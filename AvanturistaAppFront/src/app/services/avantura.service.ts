@@ -4,6 +4,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {Comment} from '../models/komentar'
 import { urlAdresa } from '../constants/url'
 import { Adventure } from '../models/adventure';
+import { map } from 'rxjs/operators';
 
 const adventure_url = urlAdresa.ADVENTURE_URL;
 const httpOptions = {
@@ -29,9 +30,12 @@ export class AdventureService {
       return this.http.post<Adventure>(adventure_url,adventure)
     }
   }
-  public deleteAdventure(id:number):Observable<any>
+  public deleteAdventure(id:number): Observable<any>
   {
-    return this.http.delete<Adventure>(`${adventure_url}/${id}`, httpOptions);
+    return this.http.delete<Adventure>(`${adventure_url}/${id}`, httpOptions).pipe( map(() => {
+       return { id } 
+      }),
+    );
   }
   
    public updateAdventure(adventure:Adventure):Observable<any>{

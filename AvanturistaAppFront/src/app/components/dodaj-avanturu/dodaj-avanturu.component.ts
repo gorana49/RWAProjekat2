@@ -10,6 +10,7 @@ import { IUser, User } from 'src/app/models/user';
 import { UpdateMyAdventure, UpdateMyAdventureSuccess } from 'src/app/store/actions/user.actions';
 import {AddAdventure, AddAdventureSuccess, UpdateAdventure} from '../../store/actions/adventures.actions'
 import { of } from 'rxjs';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-dodaj-avanturu',
   templateUrl: './dodaj-avanturu.component.html',
@@ -18,7 +19,6 @@ import { of } from 'rxjs';
 
 export class DodajAvanturuComponent implements OnInit {
   newAvantura:Adventure;
-  emptyFields:boolean;
   numberOfEntities:number;
   user:User;
   adventure:FormGroup;
@@ -33,19 +33,15 @@ export class DodajAvanturuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.emptyFields=false;
      this.store.select(selectTotalAdventures)
-     .subscribe(numberOfAvanture=>this.numberOfEntities=numberOfAvanture);
-       this.store.select(state=>state.auth.user).subscribe(user=>{
-         if(user)
-         {
-          this.user = new User(user);
-         }
+     .subscribe(
+       numberOfAvanture=> { console.log('no', numberOfAvanture); this.numberOfEntities=numberOfAvanture; }
+       );
+       this.store.select(state=>state.auth).pipe(filter(val => val !== undefined )).subscribe(auth=>{
+          this.user = new User(auth.user);
        })
   }
   onSubmit(){
-      //  if(this.handleError() == true)
-      //  {
           this.newAvantura={
             id:0,
             title:this.adventure.value.title,
@@ -59,10 +55,8 @@ export class DodajAvanturuComponent implements OnInit {
           {
           this.user.visited = [...this.user.visited, this.numberOfEntities+1];
           this.store.dispatch(new AddAdventure(this.newAvantura));
-          //SRPSKI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           this.store.dispatch(new UpdateMyAdventure(this.user));
           this.router.navigate(['/turistInfo']);
           }
-       // }
    }
 }

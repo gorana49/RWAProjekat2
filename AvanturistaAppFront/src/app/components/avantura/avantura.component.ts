@@ -23,6 +23,7 @@ export class AvanturaComponent implements OnInit, OnDestroy {
   destoryer$ = new Subject<void>();
   @Input()
   adventure:Adventure;
+  @Input() canBeDeleted: boolean;
   constructor(private store:Store<State>,private router: Router) { }
   ngOnDestroy(): void {
     this.destoryer$.next(null);
@@ -40,12 +41,8 @@ export class AvanturaComponent implements OnInit, OnDestroy {
   {
     if(this.user)
     {
-    this.user.visited = [...this.user.visited, this.numberOfEntities];
-    this.user.visited.forEach((el,ind) => {
-      if(el === this.adventure.id)
-       this.user.visited.splice(ind);   
-    });
-    
+    this.user.visited = this.user.visited.filter( el => el !== this.adventure.id);
+    console.log('user delete', this.user);
     this.store.dispatch(new UpdateMyAdventure(this.user));
 
     this.store.dispatch(new DeleteAdventure(this.adventure.id));

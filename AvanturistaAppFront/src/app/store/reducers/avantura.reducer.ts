@@ -22,9 +22,8 @@ export function avanturaReducer(state:AdventureState=initialState,action:Adventu
              },state)
         }
         case AdventureActionsTypes.DELETE_ADVENTURE_SUCCESS:{
-            console.log(action);
-            return adventureAdapter.removeOne(action.id
-                ,state)
+            console.log('delete success advanture', action);
+            return adventureAdapter.removeOne(action.id,state)
         }
 
         case AdventureActionsTypes.DELETE_ALL_ADVENTURES:

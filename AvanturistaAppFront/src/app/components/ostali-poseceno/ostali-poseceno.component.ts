@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Store } from '@ngrx/store';
+import { combineLatest } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Adventure } from 'src/app/models/adventure';
 import { User } from 'src/app/models/user';
@@ -22,36 +24,29 @@ export class OstaliPosecenoComponent implements OnInit {
   userAdventures: UserAdventures[] = [];
   myAdventures:Adventure[] = [];
   isReadyForDrawing:boolean;
-  constructor(private userService:UserService,private http:HttpClient, private store:Store<State>) { 
+  constructor(private userService: UserService, private store: Store<State>) { 
     this.isReadyForDrawing = false;
   }
 
   ngOnInit(): void {
-    this.userService.GetUsers().pipe(
-      filter(val => val !== undefined && val !==null),).subscribe(users=>{
-      this.users = users;
-      this.store.select(store=> store.auth).pipe(
-        filter(val => val !== undefined && val !==null)).subscribe(user=> {
-          let index = this.users.indexOf(user.user);
-          this.users.splice(index-1);
-          console.log(this.users);
-          this.store.select(selectAllAdventure).pipe(
-            filter(val => val !== undefined && val !==null),).subscribe(adventure =>
-              {
-                this.adventures=adventure;
-                this.users.forEach(user=>
-                {
-                  user.visited.forEach(avantura=>
-                    {
-                      this.adventures.forEach(el=>{
-                        if(el.id === avantura)
-                          this.myAdventures.push(el);
-                    })})
-                    this.userAdventure = new UserAdventures( user.id, user.username,this.myAdventures);
-                    this.myAdventures = [];
-                    this.userAdventures.push(this.userAdventure);
-                })})});
-        });
+    combineLatest([ 
+      this.userService.getUsers(),
+      this.store.select(store => store.auth).pipe(filter( auth =>auth.user===undefined)),
+      this.store.select(selectAllAdventure)
+    ]).subscribe(value => {
+      this.users = value[0];
+      this.users = this.users.filter(u => u.id != value[1].user.id);
+      this.adventures = value[2];
+      this.userAdventures = this.users.map(usr => {
+        const userAdvantures = new UserAdventures( 
+          usr.id, 
+          usr.username,
+          this.adventures.filter( adv => usr.visited.includes(adv.id) === true)
+        );
+        return userAdvantures;
+    });
+  });
       
-  }; 
-}
+  }
+}; 
+
